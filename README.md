@@ -4,7 +4,7 @@ Homepage for **TechBridge by Baselink Services Limited**, built for Task 1 of th
 
 > Bridging Learning to Real-World Experience
 
-**Live site:** _coming soon_
+**Live site:** https://oluwaseyifunmixx.github.io/Techbridge-task-1/
 
 ## About the project
 
