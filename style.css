@@ -877,3 +877,265 @@ section {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+
+
+/* =========================================
+   20. ACTIVE PAGE LINK ("you are here")
+   ========================================= */
+.nav-links a[aria-current="page"] {
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.nav-links a[aria-current="page"]::after {
+  width: 100%;
+}
+
+/* =========================================
+   21. PROGRAMS PAGE: PROGRAM DETAILS
+   ========================================= */
+.program-detail-alt {
+  background-color: var(--color-bg-soft);
+}
+
+.program-detail-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Web Development: flip the layout (intro moves to the right) */
+.program-detail-alt .program-intro {
+  order: 2;
+}
+
+/* The icon tile */
+.program-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  background-color: rgba(57, 184, 10, 0.12);
+  color: var(--color-green-text);
+}
+
+.program-detail-alt .program-icon {
+  background-color: rgba(13, 0, 77, 0.08);
+  color: var(--color-navy);
+}
+
+.program-intro h2 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.program-focus {
+  margin-bottom: 1.25rem;
+  color: var(--color-green-text);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.program-detail-alt .program-focus {
+  color: var(--color-navy-light);
+}
+
+.program-description {
+  margin-bottom: 2rem;
+  color: var(--color-text-muted);
+}
+
+/* The skills card */
+.program-skills {
+  padding: 2rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.program-skills h3 {
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Each expandable skill */
+.skill {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background-color: var(--color-bg-soft);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.skill[open] {
+  border-color: rgba(57, 184, 10, 0.5);
+  background-color: var(--color-white);
+}
+
+.skill summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  color: var(--color-navy);
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+
+/* Hide the browser's default arrow (Safari) */
+.skill summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Our own "+" that turns into "×" when open */
+.skill summary::after {
+  content: "+";
+  color: var(--color-green-text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.skill[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.skill summary:focus-visible {
+  outline: 3px solid var(--color-green-text);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.skill p {
+  padding: 0 1.1rem 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Tablet: stack intro above skills */
+@media (max-width: 900px) {
+  .program-detail-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .program-detail-alt .program-intro {
+    order: 0;
+  }
+}
+
+/* Phone: tighter card, full-width button */
+@media (max-width: 640px) {
+  .program-skills {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .program-intro .btn {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   22. PROGRAMS PAGE: COMPARE
+   ========================================= */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.compare-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-top: 6px solid var(--color-green);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.compare-card-web {
+  border-top-color: var(--color-navy);
+}
+
+.compare-card h3 {
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.compare-card dl {
+  flex-grow: 1;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.compare-row {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.compare-row:first-child {
+  padding-top: 0;
+}
+
+.compare-row:last-child {
+  border-bottom: none;
+}
+
+.compare-card dt {
+  margin-bottom: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.compare-card dd {
+  color: var(--color-navy);
+  font-weight: 500;
+}
+
+/* =========================================
+   23. PROGRAMS PAGE: APPLY BUTTONS
+   ========================================= */
+.apply-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Phone: stack cards and buttons */
+@media (max-width: 640px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .apply-actions {
+    flex-direction: column;
+  }
+
+  .apply-actions .btn,
+  .compare-card .btn {
+    width: 100%;
+  }
+}
