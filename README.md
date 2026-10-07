@@ -1,14 +1,15 @@
-# TechBridge Homepage
+# TechBridge Website
 
-Homepage for **TechBridge by Baselink Services Limited**, built for Task 1 of the TechBridge Web Development Internship.
+Website for **TechBridge by Baselink Services Limited**, built for the TechBridge Web Development Internship.
 
 > Bridging Learning to Real-World Experience
 
 **Live site:** https://oluwaseyifunmixx.github.io/Techbridge-task-1/
 
-## About the project
+## Pages
 
-A responsive, single-page website that introduces TechBridge to potential interns and learners. It covers what TechBridge is, its two programs (Data Analytics and Web Development), the 30-day practical internship, and how to apply and join the TechBridge community.
+- **Homepage** (`index.html`), Task 1: introduces TechBridge, its programs, the 30-day practical internship, and how to apply and join the community.
+- **Programs** (`programs.html`), Task 2: a dedicated page explaining the Data Analytics and Web Development programs, the skills each one introduces, and how they compare.
 
 ## Built with
 
@@ -22,21 +23,27 @@ No frameworks and no JavaScript.
 
 - Responsive layout for desktop, tablet, and mobile
 - CSS-only mobile navigation menu
-- Sticky header with smooth scrolling
+- Sticky header with smooth scrolling and an active-page indicator
+- Expandable skill details using native `<details>` and `<summary>` elements
+- Side-by-side program comparison
+- Brand colours taken from the official TechBridge logo
 - Hover effects and visible keyboard focus styles
 - Accessible, semantic HTML
 
 ## Project structure
 
-    techbridge-task-1/
+    Techbridge-task-1/
     ├── index.html
+    ├── programs.html
     ├── style.css
+    ├── README.md
     └── images/
+        └── techbridge-logo.png
 
 ## Run locally
 
 1. Clone the repository:
-   `git clone https://github.com/Oluwaseyifunmixx/techbridge-task-1.git`
+   `git clone https://github.com/Oluwaseyifunmixx/Techbridge-task-1.git`
 2. Open `index.html` in your browser, or use the Live Server extension in VS Code.
 
 ## Author
