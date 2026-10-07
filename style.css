@@ -3,12 +3,12 @@
    Change a value here and it updates everywhere.
    ========================================= */
 :root {
-  /* Brand colors */
-  --color-navy: #0B1F3A;
-  --color-navy-light: #16325C;
-  --color-amber: #F5A524;
-  --color-amber-dark: #DB8E12;
-  --color-teal: #0F766E;
+  /* Brand colors (taken from the official logo) */
+  --color-navy: #0D004D;
+  --color-navy-light: #1E1270;
+  --color-green: #39B80A;
+  --color-green-dark: #2E9608;
+  --color-green-text: #267D06;
   --color-whatsapp: #25D366;
 
   /* Neutral colors */
@@ -23,7 +23,7 @@
 
   /* Shapes and sizes */
   --radius: 12px;
-  --shadow: 0 10px 30px rgba(11, 31, 58, 0.08);
+  --shadow: 0 10px 30px rgba(13, 0, 77, 0.08);
   --max-width: 1140px;
 }
 
@@ -61,7 +61,7 @@ h3 {
 }
 
 a {
-  color: var(--color-teal);
+  color: var(--color-green-text);
   text-decoration: none;
 }
 
@@ -92,11 +92,11 @@ img {
 .btn {
   display: inline-block;
   padding: 0.6rem 1.25rem;
-    border-radius: 999px;
+  border-radius: 999px;
   border: 2px solid transparent;
   font-weight: 600;
   font-size: 0.95rem;
-    text-align: center;
+  text-align: center;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease,
               transform 0.2s ease, box-shadow 0.2s ease;
@@ -108,19 +108,19 @@ img {
 
 /* Keyboard users see a clear outline when they Tab to a button */
 .btn:focus-visible {
-  outline: 3px solid var(--color-teal);
+  outline: 3px solid var(--color-green-text);
   outline-offset: 3px;
 }
 
-/* Main action: bold amber */
+/* Main action: bold brand green */
 .btn-primary {
-  background-color: var(--color-amber);
+  background-color: var(--color-green);
   color: var(--color-navy);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-amber-dark);
-  box-shadow: 0 8px 20px rgba(245, 165, 36, 0.35);
+  background-color: var(--color-green-dark);
+  box-shadow: 0 8px 20px rgba(57, 184, 10, 0.35);
 }
 
 /* Softer option: navy outline */
@@ -137,7 +137,7 @@ img {
 
 /* The one big Apply button */
 .btn-large {
-    padding: 0.85rem 1.9rem;
+  padding: 0.85rem 1.9rem;
   font-size: 1.05rem;
 }
 
@@ -193,7 +193,7 @@ img {
   transition: color 0.2s ease;
 }
 
-/* The amber underline that grows on hover */
+/* The green underline that grows on hover */
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -201,7 +201,7 @@ img {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background-color: var(--color-amber);
+  background-color: var(--color-green);
   transition: width 0.2s ease;
 }
 
@@ -216,7 +216,7 @@ img {
 /* Keyboard outline for the logo and menu links */
 .logo:focus-visible,
 .nav-links a:focus-visible {
-  outline: 3px solid var(--color-teal);
+  outline: 3px solid var(--color-green-text);
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -231,7 +231,7 @@ section {
 .eyebrow {
   display: inline-block;
   margin-bottom: 0.75rem;
-  color: var(--color-teal);
+  color: var(--color-green-text);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -258,10 +258,10 @@ section {
    ========================================= */
 .hero {
   padding: 4rem 0 5rem;
-    text-align: center;
+  text-align: center;
   background:
-    radial-gradient(circle at 15% 20%, rgba(15, 118, 110, 0.10), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(245, 165, 36, 0.15), transparent 40%),
+    radial-gradient(circle at 15% 20%, rgba(57, 184, 10, 0.10), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(13, 0, 77, 0.08), transparent 40%),
     var(--color-bg-soft);
 }
 
@@ -273,7 +273,7 @@ section {
 .hero .eyebrow {
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  background-color: rgba(15, 118, 110, 0.1);
+  background-color: rgba(57, 184, 10, 0.1);
   letter-spacing: 0.02em;
   text-transform: none;
 }
@@ -348,8 +348,8 @@ section {
   width: 1.35rem;
   height: 1.35rem;
   border-radius: 50%;
-  background-color: rgba(15, 118, 110, 0.12);
-  color: var(--color-teal);
+  background-color: rgba(57, 184, 10, 0.12);
+  color: var(--color-green-text);
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -381,7 +381,7 @@ section {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* The teal-to-amber strip across the top of each card */
+/* The navy-to-green strip across the top of each card */
 .program-card::before {
   content: "";
   position: absolute;
@@ -389,12 +389,12 @@ section {
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, var(--color-teal), var(--color-amber));
+  background: linear-gradient(90deg, var(--color-navy), var(--color-green));
 }
 
 .program-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(11, 31, 58, 0.14);
+  box-shadow: 0 18px 40px rgba(13, 0, 77, 0.14);
 }
 
 .program-card h3 {
@@ -437,15 +437,15 @@ section {
   margin: 0 auto;
   text-align: center;
   border-radius: 50%;
-  border: 2px solid rgba(245, 165, 36, 0.5);
+  border: 2px solid rgba(57, 184, 10, 0.5);
   background: radial-gradient(circle at 30% 30%, var(--color-navy-light), var(--color-navy));
   box-shadow:
-    0 0 0 12px rgba(245, 165, 36, 0.08),
+    0 0 0 12px rgba(57, 184, 10, 0.08),
     0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .highlight-number {
-  color: var(--color-amber);
+  color: var(--color-green);
   font-size: clamp(5rem, 10vw, 7.5rem);
   font-weight: 800;
   line-height: 1;
@@ -460,7 +460,7 @@ section {
 
 /* Text colors for the dark background */
 .internship .eyebrow {
-  color: var(--color-amber);
+  color: var(--color-green);
 }
 
 .internship h2 {
@@ -481,10 +481,10 @@ section {
   color: var(--color-white);
 }
 
-/* Amber checkmarks instead of teal on the dark background */
+/* Bright green checkmarks on the dark background */
 .internship .benefits-list li::before {
-  background-color: rgba(245, 165, 36, 0.18);
-  color: var(--color-amber);
+  background-color: rgba(57, 184, 10, 0.18);
+  color: var(--color-green);
 }
 
 /* =========================================
@@ -516,9 +516,9 @@ section {
 .apply-inner {
   width: calc(100% - 3rem);
   padding: 3.5rem 2rem;
-  border: 1px solid rgba(245, 165, 36, 0.35);
+  border: 1px solid rgba(57, 184, 10, 0.35);
   border-radius: calc(var(--radius) * 2);
-  background: linear-gradient(135deg, rgba(245, 165, 36, 0.14), rgba(15, 118, 110, 0.10));
+  background: linear-gradient(135deg, rgba(57, 184, 10, 0.12), rgba(13, 0, 77, 0.06));
 }
 
 /* ----- Community: soft background ----- */
@@ -530,7 +530,7 @@ section {
 .contact-email {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  border: 2px dashed rgba(15, 118, 110, 0.4);
+  border: 2px dashed rgba(57, 184, 10, 0.5);
   border-radius: var(--radius);
   font-size: clamp(1rem, 2.5vw, 1.35rem);
   font-weight: 700;
@@ -539,12 +539,12 @@ section {
 }
 
 .contact-email:hover {
-  border-color: var(--color-teal);
-  background-color: rgba(15, 118, 110, 0.08);
+  border-color: var(--color-green-text);
+  background-color: rgba(57, 184, 10, 0.08);
 }
 
 .contact-email:focus-visible {
-  outline: 3px solid var(--color-teal);
+  outline: 3px solid var(--color-green-text);
   outline-offset: 3px;
 }
 
@@ -599,11 +599,11 @@ section {
 }
 
 .site-footer a:not(.logo):hover {
-  color: var(--color-amber);
+  color: var(--color-green);
 }
 
 .site-footer a:focus-visible {
-  outline: 3px solid var(--color-amber);
+  outline: 3px solid var(--color-green);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -740,7 +740,7 @@ section {
     cursor: pointer;
   }
 
-    /* Mobile: hide the header's Apply Now... */
+  /* Mobile: hide the header's Apply Now... */
   .header-apply {
     display: none;
   }
@@ -844,17 +844,9 @@ section {
 
   /* Keyboard users: outline on the hamburger when focused */
   .nav-toggle:focus-visible ~ .nav-toggle-label {
-    outline: 3px solid var(--color-teal);
+    outline: 3px solid var(--color-green-text);
     outline-offset: 2px;
   }
-}
-
-/* Very small phones: shrink the logo and button a little */
-@media (max-width: 400px) {
-  .logo {
-    font-size: 1.3rem;
-  }
-
 }
 
 /* =========================================
