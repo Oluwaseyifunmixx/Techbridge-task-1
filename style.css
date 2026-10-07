@@ -856,3 +856,32 @@ section {
   }
 
 }
+
+/* =========================================
+   18. LOGO IMAGE
+   ========================================= */
+.logo img {
+  height: 48px;
+  width: auto;
+}
+
+.site-footer .logo img {
+  height: 56px;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-white);
+  border-radius: 10px;
+}
+
+@media (max-width: 400px) {
+  .logo img {
+    height: 40px;
+  }
+}
+
+/* =========================================
+   19. HEADER SPACING (top and bottom only)
+   ========================================= */
+.site-header .header-inner {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
