@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The TechBridge 30-day internship journey: 8 practical tasks, when each one is introduced, and what you'll build.">
+  <title>Internship Tasks | TechBridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="logo">
+        <img src="images/techbridge-logo.png" alt="TechBridge home">
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+      </label>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="tasks.html" aria-current="page">Internship Tasks</a></li>
+          <li><a href="index.html#community">Community</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li class="nav-apply"><a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apply Now</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary header-apply" target="_blank" rel="noopener noreferrer">Apply Now</a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== OVERVIEW: the 30-day structured internship ===== -->
+        <section id="overview" class="hero tasks-hero">
+      <div class="container hero-inner">
+
+        <p class="eyebrow">The TechBridge Internship</p>
+
+        <h1>Your 30-day internship journey, task by task</h1>
+
+        <p class="hero-text">
+          TechBridge offers a structured 30-day practical internship made up of
+          8 tasks. Each task builds on the one before it, so you progressively
+          develop your web development skills by completing practical projects,
+          from your first webpage to a complete platform.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#tasks" class="btn btn-secondary">View all 8 tasks</a>
+        </div>
+
+        <ul class="tasks-stats">
+          <li><strong>30</strong><span>days</span></li>
+          <li><strong>8</strong><span>practical tasks</span></li>
+          <li><strong>1</strong><span>complete platform</span></li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ===== JOURNEY: the 30-day bar + difficulty legend ===== -->
+        <section id="journey" class="journey">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="eyebrow">The Journey</p>
+          <h2>8 tasks across 30 days</h2>
+          <p>
+            Each dot marks the day a task is introduced.
+            Select a task to jump to its details.
+          </p>
+        </div>
+
+        <ol class="journey-track">
+          <li style="--day: 1"><a href="#task-1"><span class="journey-day">Day 1</span><span class="journey-dot"></span><span class="journey-task">Task 1</span></a></li>
+          <li style="--day: 4"><a href="#task-2"><span class="journey-day">Day 4</span><span class="journey-dot"></span><span class="journey-task">Task 2</span></a></li>
+          <li style="--day: 8"><a href="#task-3"><span class="journey-day">Day 8</span><span class="journey-dot"></span><span class="journey-task">Task 3</span></a></li>
+          <li style="--day: 11"><a href="#task-4"><span class="journey-day">Day 11</span><span class="journey-dot"></span><span class="journey-task">Task 4</span></a></li>
+          <li style="--day: 15"><a href="#task-5"><span class="journey-day">Day 15</span><span class="journey-dot"></span><span class="journey-task">Task 5</span></a></li>
+          <li style="--day: 19"><a href="#task-6"><span class="journey-day">Day 19</span><span class="journey-dot"></span><span class="journey-task">Task 6</span></a></li>
+          <li style="--day: 22"><a href="#task-7"><span class="journey-day">Day 22</span><span class="journey-dot"></span><span class="journey-task">Task 7</span></a></li>
+          <li style="--day: 26"><a href="#task-8"><span class="journey-day">Day 26</span><span class="journey-dot"></span><span class="journey-task">Task 8</span></a></li>
+        </ol>
+
+        <div class="journey-ends">
+          <span>Start: Day 1</span>
+          <span>End: Day 30</span>
+        </div>
+
+        <ul class="difficulty-legend" aria-label="Difficulty levels">
+          <li><span class="badge badge-level-1">Beginner</span></li>
+          <li><span class="badge badge-level-2">Beginner → Intermediate</span></li>
+          <li><span class="badge badge-level-3">Intermediate</span></li>
+          <li><span class="badge badge-level-4">Intermediate → Advanced Beginner</span></li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ===== TIMELINE: all 8 tasks ===== -->
+        <section id="tasks" class="tasks-timeline">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="eyebrow">The Tasks</p>
+          <h2>The 8 internship tasks</h2>
+          <p>
+            Each task builds on the last, starting with a single webpage and
+            ending with a complete internship platform.
+          </p>
+        </div>
+
+        <ol class="timeline">
+
+          <li class="task-item" id="task-1" data-status="available">
+            <div class="task-marker" aria-hidden="true">1</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 1</span>
+                <span class="badge badge-level-1">Beginner</span>
+                <span class="status status-available">Available</span>
+              </div>
+              <p class="task-number">Task 1</p>
+              <h3>Build the TechBridge Homepage</h3>
+              <p class="task-description">Create the first version of the TechBridge website using HTML and CSS.</p>
+            </article>
+          </li>
+
+          <li class="task-item" id="task-2" data-status="available">
+            <div class="task-marker" aria-hidden="true">2</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 4</span>
+                <span class="badge badge-level-2">Beginner → Intermediate</span>
+                <span class="status status-available">Available</span>
+              </div>
+              <p class="task-number">Task 2</p>
+              <h3>Build the TechBridge Programs Experience</h3>
+              <p class="task-description">Create a Programs experience that presents TechBridge's available learning programs.</p>
+            </article>
+          </li>
+
+          <li class="task-item" id="task-3" data-status="available">
+            <div class="task-marker" aria-hidden="true">3</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 8</span>
+                <span class="badge badge-level-2">Beginner → Intermediate</span>
+                <span class="status status-available">Available</span>
+              </div>
+              <p class="task-number">Task 3</p>
+              <h3>Build the Internship Tasks Experience</h3>
+              <p class="task-description">Create an interface that presents the TechBridge internship tasks and helps users understand the internship journey.</p>
+            </article>
+          </li>
+
+          <li class="task-item" id="task-4" data-status="upcoming">
+            <div class="task-marker" aria-hidden="true">4</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 11</span>
+                <span class="badge badge-level-3">Intermediate</span>
+                <span class="status status-upcoming">Upcoming</span>
+              </div>
+              <p class="task-number">Task 4</p>
+              <h3>Build an Interactive Task Tracker</h3>
+              <p class="task-description">Use JavaScript to make the internship task experience interactive and allow progress to be tracked.</p>
+            </article>
+          </li>
+
+          <li class="task-item" id="task-5" data-status="upcoming">
+            <div class="task-marker" aria-hidden="true">5</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 15</span>
+                <span class="badge badge-level-3">Intermediate</span>
+                <span class="status status-upcoming">Upcoming</span>
+              </div>
+              <p class="task-number">Task 5</p>
+              <h3>Build the Intern Registration Experience</h3>
+              <p class="task-description">Create a professional registration/onboarding interface for TechBridge interns.</p>
+            </article>
+          </li>
+
+          <li class="task-item" id="task-6" data-status="upcoming">
+            <div class="task-marker" aria-hidden="true">6</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 19</span>
+                <span class="badge badge-level-3">Intermediate</span>
+                <span class="status status-upcoming">Upcoming</span>
+              </div>
+              <p class="task-number">Task 6</p>
+              <h3>Build the Task Submission System</h3>
+              <p class="task-description">Create an interface through which interns can prepare and submit their task work.</p>
+            </article>
+          </li>
+
+          <li class="task-item" id="task-7" data-status="upcoming">
+            <div class="task-marker" aria-hidden="true">7</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 22</span>
+                <span class="badge badge-level-4">Intermediate → Advanced Beginner</span>
+                <span class="status status-upcoming">Upcoming</span>
+              </div>
+              <p class="task-number">Task 7</p>
+              <h3>Build the Intern Dashboard</h3>
+              <p class="task-description">Create a dashboard where an intern can view their profile, progress, tasks, and submissions.</p>
+            </article>
+          </li>
+
+          <li class="task-item" id="task-8" data-status="upcoming">
+            <div class="task-marker" aria-hidden="true">8</div>
+            <article class="task-card">
+              <div class="task-meta">
+                <span class="task-day">Day 26</span>
+                <span class="badge badge-level-4">Intermediate → Advanced Beginner</span>
+                <span class="status status-upcoming">Upcoming</span>
+              </div>
+              <p class="task-number">Task 8</p>
+              <h3>Build the Complete TechBridge Internship Platform</h3>
+              <p class="task-description">Combine the different components created during the internship into a complete TechBridge platform.</p>
+            </article>
+          </li>
+
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ===== APPLY: call to action ===== -->
+        <section id="apply" class="apply">
+      <div class="container apply-inner">
+
+        <p class="eyebrow">Start your journey</p>
+        <h2>Ready to begin your internship?</h2>
+        <p>
+          Apply for the TechBridge 30-day practical internship, or explore
+          the programs first.
+        </p>
+
+        <div class="apply-actions">
+          <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
+            Apply for the Internship
+          </a>
+          <a href="programs.html" class="btn btn-secondary btn-large">
+            Explore Programs
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/techbridge-logo.png" alt="TechBridge home">
+        </a>
+        <p>Bridging Learning to Real-World Experience</p>
+        <p class="footer-small">TechBridge by Baselink Services Limited</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="tasks.html">Internship Tasks</a></li>
+          <li><a href="index.html#community">Community</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-connect">
+        <h3>Connect</h3>
+        <ul>
+          <li>
+            <a href="mailto:techbridgebaslink@gmail.com">techbridgebaslink@gmail.com</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/techbridge-services/"
+               target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/p/Baselink-Services-100066771475783/"
+               target="_blank" rel="noopener noreferrer">Facebook</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 TechBridge by Baselink Services Limited. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
