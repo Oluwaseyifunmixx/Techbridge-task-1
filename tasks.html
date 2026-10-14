@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The TechBridge 30-day internship journey: 8 practical tasks, when each one is introduced, and what you'll build.">
-  <title>Internship Tasks | TechBridge</title>
+  <meta name="description" content="The TechBridge 30-day internship roadmap: explore the Data Analytics and Web Development tracks, each with 8 practical tasks.">  <title>Internship Tasks | TechBridge</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -44,28 +43,28 @@
   <main>
 
     <!-- ===== OVERVIEW: the 30-day structured internship ===== -->
-        <section id="overview" class="hero tasks-hero">
+            <section id="overview" class="hero tasks-hero">
       <div class="container hero-inner">
 
         <p class="eyebrow">The TechBridge Internship</p>
 
-        <h1>Your 30-day internship journey, task by task</h1>
+        <h1>Your 30-day internship roadmap, in two tracks</h1>
 
         <p class="hero-text">
-          TechBridge offers a structured 30-day practical internship made up of
-          8 tasks. Each task builds on the one before it, so you progressively
-          develop your web development skills by completing practical projects,
-          from your first webpage to a complete platform.
+          TechBridge offers a structured 30-day practical internship in two
+          tracks: Data Analytics and Web Development. Each track has 8 practical
+          tasks that build on one another, so your skills grow progressively as
+          you complete real projects.
         </p>
 
         <div class="hero-actions">
-          <a href="#tasks" class="btn btn-secondary">View all 8 tasks</a>
+          <a href="#tasks" class="btn btn-secondary">Choose your track</a>
         </div>
 
         <ul class="tasks-stats">
           <li><strong>30</strong><span>days</span></li>
-          <li><strong>8</strong><span>practical tasks</span></li>
-          <li><strong>1</strong><span>complete platform</span></li>
+          <li><strong>2</strong><span>tracks</span></li>
+          <li><strong>8</strong><span>tasks per track</span></li>
         </ul>
 
       </div>
@@ -78,9 +77,10 @@
         <div class="section-heading">
           <p class="eyebrow">The Journey</p>
           <h2>8 tasks across 30 days</h2>
-          <p>
-            Each dot marks the day a task is introduced.
-            Select a task to jump to its details.
+                    <p>
+            Both tracks follow the same schedule. Each dot marks the day a
+            task is introduced. Select one to jump to that task in the track
+            you're viewing.
           </p>
         </div>
 
@@ -104,140 +104,44 @@
           <li><span class="badge badge-level-1">Beginner</span></li>
           <li><span class="badge badge-level-2">Beginner → Intermediate</span></li>
           <li><span class="badge badge-level-3">Intermediate</span></li>
-          <li><span class="badge badge-level-4">Intermediate → Advanced Beginner</span></li>
         </ul>
 
       </div>
     </section>
 
     <!-- ===== TIMELINE: all 8 tasks ===== -->
-        <section id="tasks" class="tasks-timeline">
+           <section id="tasks" class="tasks-timeline">
       <div class="container">
 
         <div class="section-heading">
-          <p class="eyebrow">The Tasks</p>
-          <h2>The 8 internship tasks</h2>
+          <p class="eyebrow">The Roadmap</p>
+          <h2>Choose your track</h2>
           <p>
-            Each task builds on the last, starting with a single webpage and
-            ending with a complete internship platform.
+            Both tracks run for 30 days with 8 practical tasks.
+            Select a track to see its full journey.
           </p>
         </div>
 
-        <ol class="timeline">
+        <div class="track-switcher" role="group" aria-label="Choose an internship track">
+          <button type="button" class="track-btn" data-track="data-analytics" aria-pressed="false">
+            Data Analytics
+          </button>
+          <button type="button" class="track-btn" data-track="web-development" aria-pressed="true">
+            Web Development
+          </button>
+        </div>
 
-          <li class="task-item" id="task-1" data-status="available">
-            <div class="task-marker" aria-hidden="true">1</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 1</span>
-                <span class="badge badge-level-1">Beginner</span>
-                <span class="status status-available">Available</span>
-              </div>
-              <p class="task-number">Task 1</p>
-              <h3>Build the TechBridge Homepage</h3>
-              <p class="task-description">Create the first version of the TechBridge website using HTML and CSS.</p>
-            </article>
-          </li>
+        <p class="current-track" aria-live="polite">
+          Currently viewing: <strong id="current-track-name">Web Development</strong>
+        </p>
 
-          <li class="task-item" id="task-2" data-status="available">
-            <div class="task-marker" aria-hidden="true">2</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 4</span>
-                <span class="badge badge-level-2">Beginner → Intermediate</span>
-                <span class="status status-available">Available</span>
-              </div>
-              <p class="task-number">Task 2</p>
-              <h3>Build the TechBridge Programs Experience</h3>
-              <p class="task-description">Create a Programs experience that presents TechBridge's available learning programs.</p>
-            </article>
-          </li>
-
-          <li class="task-item" id="task-3" data-status="available">
-            <div class="task-marker" aria-hidden="true">3</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 8</span>
-                <span class="badge badge-level-2">Beginner → Intermediate</span>
-                <span class="status status-available">Available</span>
-              </div>
-              <p class="task-number">Task 3</p>
-              <h3>Build the Internship Tasks Experience</h3>
-              <p class="task-description">Create an interface that presents the TechBridge internship tasks and helps users understand the internship journey.</p>
-            </article>
-          </li>
-
-          <li class="task-item" id="task-4" data-status="upcoming">
-            <div class="task-marker" aria-hidden="true">4</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 11</span>
-                <span class="badge badge-level-3">Intermediate</span>
-                <span class="status status-upcoming">Upcoming</span>
-              </div>
-              <p class="task-number">Task 4</p>
-              <h3>Build an Interactive Task Tracker</h3>
-              <p class="task-description">Use JavaScript to make the internship task experience interactive and allow progress to be tracked.</p>
-            </article>
-          </li>
-
-          <li class="task-item" id="task-5" data-status="upcoming">
-            <div class="task-marker" aria-hidden="true">5</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 15</span>
-                <span class="badge badge-level-3">Intermediate</span>
-                <span class="status status-upcoming">Upcoming</span>
-              </div>
-              <p class="task-number">Task 5</p>
-              <h3>Build the Intern Registration Experience</h3>
-              <p class="task-description">Create a professional registration/onboarding interface for TechBridge interns.</p>
-            </article>
-          </li>
-
-          <li class="task-item" id="task-6" data-status="upcoming">
-            <div class="task-marker" aria-hidden="true">6</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 19</span>
-                <span class="badge badge-level-3">Intermediate</span>
-                <span class="status status-upcoming">Upcoming</span>
-              </div>
-              <p class="task-number">Task 6</p>
-              <h3>Build the Task Submission System</h3>
-              <p class="task-description">Create an interface through which interns can prepare and submit their task work.</p>
-            </article>
-          </li>
-
-          <li class="task-item" id="task-7" data-status="upcoming">
-            <div class="task-marker" aria-hidden="true">7</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 22</span>
-                <span class="badge badge-level-4">Intermediate → Advanced Beginner</span>
-                <span class="status status-upcoming">Upcoming</span>
-              </div>
-              <p class="task-number">Task 7</p>
-              <h3>Build the Intern Dashboard</h3>
-              <p class="task-description">Create a dashboard where an intern can view their profile, progress, tasks, and submissions.</p>
-            </article>
-          </li>
-
-          <li class="task-item" id="task-8" data-status="upcoming">
-            <div class="task-marker" aria-hidden="true">8</div>
-            <article class="task-card">
-              <div class="task-meta">
-                <span class="task-day">Day 26</span>
-                <span class="badge badge-level-4">Intermediate → Advanced Beginner</span>
-                <span class="status status-upcoming">Upcoming</span>
-              </div>
-              <p class="task-number">Task 8</p>
-              <h3>Build the Complete TechBridge Internship Platform</h3>
-              <p class="task-description">Combine the different components created during the internship into a complete TechBridge platform.</p>
-            </article>
-          </li>
-
+        <ol class="timeline" id="task-list">
+          <!-- JavaScript fills this list with the selected track's 8 tasks -->
         </ol>
+
+        <noscript>
+          <p class="noscript-message">Please turn on JavaScript in your browser to view the internship tasks.</p>
+        </noscript>
 
       </div>
     </section>
@@ -314,5 +218,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

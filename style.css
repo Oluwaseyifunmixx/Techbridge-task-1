@@ -1535,3 +1535,119 @@ section {
     width: 100%;
   }
 }
+
+/* =========================================
+   29. ROADMAP: TRACK SWITCHER
+   ========================================= */
+.track-switcher {
+  display: flex;
+  gap: 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 1.25rem;
+  padding: 0.4rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+.track-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.track-btn:hover {
+  background-color: var(--color-bg-soft);
+  color: var(--color-navy);
+}
+
+/* The selected track */
+.track-btn[aria-pressed="true"] {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.track-btn:focus-visible {
+  outline: 3px solid var(--color-green-text);
+  outline-offset: 2px;
+}
+
+/* "Currently viewing: ..." */
+.current-track {
+  margin-bottom: 2.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.current-track strong {
+  color: var(--color-green-text);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Message for visitors with JavaScript turned off */
+.noscript-message {
+  padding: 1.5rem;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  text-align: center;
+}
+
+/* =========================================
+   30. ROADMAP: CARDS FADE IN WHEN THE TRACK CHANGES
+   ========================================= */
+.task-item {
+  animation: task-fade-in 0.4s ease both;
+}
+
+@keyframes task-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Respect visitors who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .task-item {
+    animation: none;
+  }
+}
+
+/* =========================================
+   31. DIFFICULTY: 3 OFFICIAL LEVELS
+   (Intermediate becomes the strongest badge)
+   ========================================= */
+.badge-level-3 {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* Phone: buttons share the width equally */
+@media (max-width: 640px) {
+  .track-switcher {
+    width: 100%;
+  }
+
+  .track-btn {
+    flex: 1;
+    padding: 0.7rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
