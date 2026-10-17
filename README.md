@@ -11,29 +11,32 @@ Website for **TechBridge by Baselink Services Limited**, built for the TechBridg
 - **Homepage** (`index.html`), Task 1: introduces TechBridge, its programs, the 30-day practical internship, and how to apply and join the community.
 - **Programs** (`programs.html`), Task 2: a dedicated page explaining the Data Analytics and Web Development programs, the skills each one introduces, and how they compare.
 - **Internship Roadmap** (`tasks.html`), Tasks 3 and 4: the 30-day internship journey as an interactive roadmap. Visitors switch between the Data Analytics and Web Development tracks to see each track's 8 tasks, days, descriptions, and difficulty levels, without refreshing the page.
+- **Challenge Hub** (`challenges.html`), Task 5: practical challenges from both tracks that visitors can filter by track and difficulty, with a details popup for each challenge.
 
 ## Built with
 
 - **HTML5**: semantic structure, validated with the W3C Nu HTML Checker
 - **CSS3**: custom properties (variables), Flexbox, Grid, media queries, and animations
-- **JavaScript (vanilla)**: track switching with variables, arrays, objects, functions, event listeners, conditional logic, and DOM manipulation
+- **JavaScript (vanilla)**: variables, arrays, objects, functions, event listeners, conditional logic, DOM manipulation, array methods (`filter`, `find`, `forEach`), and event delegation
 - **Google Fonts**: Plus Jakarta Sans
 
 No frameworks.
 
 ## Features
 
+- Challenge Hub with combined track and difficulty filters, a live results count, a "no results" message, and a reset button
+- Challenge details shown in an accessible popup using the native `<dialog>` element (closes with Escape, the close buttons, or a click outside)
 - Interactive two-track roadmap that switches between Data Analytics and Web Development without a page refresh
-- Task data stored as JavaScript arrays of objects and rendered onto the page with DOM manipulation
-- Accessible track switcher using `aria-pressed` and a live "Currently viewing" label for screen readers
+- Content stored as JavaScript arrays of objects and rendered onto the page with DOM manipulation
+- Accessible controls using `aria-pressed`, `aria-live` announcements, and visible keyboard focus styles
 - 30-day journey bar with each task placed on its real day
-- Vertical task timeline with difficulty badges
 - Expandable skill details using native `<details>` and `<summary>` elements
 - Side-by-side program comparison
 - Responsive layout for desktop, tablet, and mobile, with a CSS-only mobile navigation menu
 - Sticky header with smooth scrolling and an active-page indicator
 - Brand colours taken from the official TechBridge logo
-- Hover effects, visible keyboard focus styles, and reduced-motion support
+- Cache-busted CSS and JavaScript files, so visitors always get the latest version
+- Hover effects and reduced-motion support
 
 ## Project structure
 
@@ -41,8 +44,10 @@ No frameworks.
     ├── index.html
     ├── programs.html
     ├── tasks.html
+    ├── challenges.html
     ├── style.css
-    ├── script.js
+    ├── script.js          (Roadmap page)
+    ├── challenges.js      (Challenge Hub page)
     ├── README.md
     └── images/
         └── techbridge-logo.png
