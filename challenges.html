@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore practical TechBridge challenges in Data Analytics and Web Development. Filter by track or difficulty and open any challenge to see what it involves.">
+  <title>Challenge Hub | TechBridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="logo">
+        <img src="images/techbridge-logo.png" alt="TechBridge home">
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+      </label>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="tasks.html">Roadmap</a></li>
+          <li><a href="challenges.html" aria-current="page">Challenges</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li class="nav-apply"><a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apply Now</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary header-apply" target="_blank" rel="noopener noreferrer">Apply Now</a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO: what the Challenge Hub is ===== -->
+    <section id="overview" class="hero challenges-hero">
+      <div class="container hero-inner">
+
+        <p class="eyebrow">Challenge Hub</p>
+
+        <h1>TechBridge Challenge Hub</h1>
+
+        <p class="hero-text">
+          Explore practical challenges across both TechBridge tracks. Filter by
+          track or difficulty, then open any challenge to see what it involves,
+          the skills and tools you'll use, and what you'll produce by the end.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#challenges" class="btn btn-secondary">Browse challenges</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CHALLENGES: filters + cards ===== -->
+    <section id="challenges" class="challenge-hub">
+      <div class="container">
+
+        <!-- Filters -->
+        <div class="filter-bar">
+
+          <div class="filter-group">
+            <p class="filter-label" id="track-filter-label">Track</p>
+            <div class="filter-options" role="group" aria-labelledby="track-filter-label">
+              <button type="button" class="filter-btn" data-filter-type="track" data-value="all" aria-pressed="true">All</button>
+              <button type="button" class="filter-btn" data-filter-type="track" data-value="data-analytics" aria-pressed="false">Data Analytics</button>
+              <button type="button" class="filter-btn" data-filter-type="track" data-value="web-development" aria-pressed="false">Web Development</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <p class="filter-label" id="difficulty-filter-label">Difficulty</p>
+            <div class="filter-options" role="group" aria-labelledby="difficulty-filter-label">
+              <button type="button" class="filter-btn" data-filter-type="difficulty" data-value="all" aria-pressed="true">All</button>
+              <button type="button" class="filter-btn" data-filter-type="difficulty" data-value="Beginner" aria-pressed="false">Beginner</button>
+              <button type="button" class="filter-btn" data-filter-type="difficulty" data-value="Intermediate" aria-pressed="false">Intermediate</button>
+              <button type="button" class="filter-btn" data-filter-type="difficulty" data-value="Advanced" aria-pressed="false">Advanced</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Results count + reset -->
+        <div class="results-bar">
+          <p class="results-count" id="results-count" aria-live="polite">Showing all challenges</p>
+          <button type="button" class="reset-btn" id="reset-filters">Reset filters</button>
+        </div>
+
+        <!-- JavaScript fills this list with challenge cards -->
+        <ul class="challenge-grid" id="challenge-grid"></ul>
+
+        <!-- Shown by JavaScript when no challenge matches the filters -->
+        <div class="no-results" id="no-results" hidden>
+          <p>No challenges match these filters.</p>
+          <button type="button" class="btn btn-secondary" id="no-results-reset">Reset filters</button>
+        </div>
+
+        <noscript>
+          <p class="noscript-message">Please turn on JavaScript in your browser to explore the challenges.</p>
+        </noscript>
+
+      </div>
+    </section>
+
+    <!-- ===== APPLY: call to action ===== -->
+    <section id="apply" class="apply">
+      <div class="container apply-inner">
+
+        <p class="eyebrow">Ready for the real thing?</p>
+        <h2>Take on challenges like these as a TechBridge intern</h2>
+        <p>
+          Apply for the TechBridge 30-day practical internship, or see how the
+          internship tasks are laid out in each track.
+        </p>
+
+        <div class="apply-actions">
+          <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
+            Apply for the Internship
+          </a>
+          <a href="tasks.html" class="btn btn-secondary btn-large">
+            View the Roadmap
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== CHALLENGE DETAILS POPUP (filled by JavaScript) ===== -->
+  <dialog class="challenge-dialog" id="challenge-dialog" aria-labelledby="dialog-title">
+
+    <div class="dialog-header">
+      <div>
+        <p class="dialog-meta" id="dialog-meta">Challenge</p>
+        <h2 id="dialog-title">Challenge details</h2>
+      </div>
+      <button type="button" class="dialog-close" id="dialog-close" aria-label="Close challenge details">&times;</button>
+    </div>
+
+    <div class="dialog-body" id="dialog-body"></div>
+
+    <div class="dialog-footer">
+      <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apply for the Internship</a>
+      <button type="button" class="btn btn-secondary" id="dialog-close-bottom">Close</button>
+    </div>
+
+  </dialog>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/techbridge-logo.png" alt="TechBridge home">
+        </a>
+        <p>Bridging Learning to Real-World Experience</p>
+        <p class="footer-small">TechBridge by Baselink Services Limited</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="tasks.html">Roadmap</a></li>
+          <li><a href="challenges.html">Challenges</a></li>
+          <li><a href="index.html#community">Community</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-connect">
+        <h3>Connect</h3>
+        <ul>
+          <li>
+            <a href="mailto:techbridgebaslink@gmail.com">techbridgebaslink@gmail.com</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/techbridge-services/"
+               target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/p/Baselink-Services-100066771475783/"
+               target="_blank" rel="noopener noreferrer">Facebook</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 TechBridge by Baselink Services Limited. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="challenges.js?v=5"></script>
+</body>
+</html>

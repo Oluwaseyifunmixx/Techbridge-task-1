@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="TechBridge by Baselink Services Limited. Bridging Learning to Real-World Experience through a 30-day practical internship in Data Analytics and Web Development.">
   <title>TechBridge | Bridging Learning to Real-World Experience</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -16,23 +16,22 @@
   <header class="site-header">
     <div class="container header-inner">
 
-      <!-- TODO: replace this text with the logo image once we have the file -->
-            <a href="#home" class="logo">
+      <a href="#home" class="logo">
         <img src="images/techbridge-logo.png" alt="TechBridge home">
       </a>
 
       <!-- Mobile menu toggle (CSS-only: the checkbox is the on/off switch) -->
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
       <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
+        <span></span>
       </label>
 
       <nav class="main-nav" aria-label="Main navigation">
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="programs.html">Programs</a></li>
-          <li><a href="#internship">Internship</a></li>
-          <li><a href="#community">Community</a></li>
+          <li><a href="tasks.html">Roadmap</a></li>
+          <li><a href="challenges.html">Challenges</a></li>
           <li><a href="#contact">Contact</a></li>
           <li class="nav-apply"><a href="#apply" class="btn btn-primary">Apply Now</a></li>
         </ul>
@@ -46,7 +45,7 @@
   <main>
 
     <!-- ===== HERO: first thing visitors see ===== -->
-        <section id="home" class="hero">
+    <section id="home" class="hero">
       <div class="container hero-inner">
 
         <p class="eyebrow">TechBridge by Baselink Services Limited</p>
@@ -61,14 +60,14 @@
 
         <div class="hero-actions">
           <a href="#apply" class="btn btn-primary">Apply for the Internship</a>
-          <a href="#programs" class="btn btn-secondary">Explore Programs</a>
+          <a href="programs.html" class="btn btn-secondary">Explore Programs</a>
         </div>
 
       </div>
     </section>
 
     <!-- ===== ABOUT: what TechBridge is, offers, and who it's for ===== -->
-        <section id="about" class="about">
+    <section id="about" class="about">
       <div class="container">
 
         <div class="section-heading">
@@ -107,8 +106,8 @@
       </div>
     </section>
 
-    <!-- ===== PROGRAMS: Data Analytics + Web Development ===== -->
-       <section id="programs" class="programs">
+    <!-- ===== PROGRAMS: preview, linking to programs.html ===== -->
+    <section id="programs" class="programs">
       <div class="container">
 
         <div class="section-heading">
@@ -128,7 +127,8 @@
               Work with data to uncover patterns and insights that help
               people and organizations make better decisions.
             </p>
-            <a href="programs.html#data-analytics" class="btn btn-secondary">Explore Data Analytics</a>          </article>
+            <a href="programs.html#data-analytics" class="btn btn-secondary">Explore Data Analytics</a>
+          </article>
 
           <article class="program-card">
             <h3>Web Development</h3>
@@ -136,7 +136,8 @@
               Build websites and web applications, turning ideas into
               pages and tools that people can actually use.
             </p>
-            <a href="programs.html#web-development" class="btn btn-secondary">Explore Web Development</a>          </article>
+            <a href="programs.html#web-development" class="btn btn-secondary">Explore Web Development</a>
+          </article>
 
         </div>
 
@@ -144,7 +145,7 @@
     </section>
 
     <!-- ===== INTERNSHIP: 30-day practical internship ===== -->
-        <section id="internship" class="internship">
+    <section id="internship" class="internship">
       <div class="container internship-inner">
 
         <div class="internship-highlight">
@@ -176,14 +177,17 @@
             </li>
           </ul>
 
-          <a href="#apply" class="btn btn-primary">Apply for the Internship</a>
+          <div class="internship-actions">
+            <a href="#apply" class="btn btn-primary">Apply for the Internship</a>
+            <a href="tasks.html" class="btn btn-outline-light">See the Internship Roadmap</a>
+          </div>
         </div>
 
       </div>
     </section>
 
     <!-- ===== APPLY: call to action ===== -->
-        <section id="apply" class="apply">
+    <section id="apply" class="apply">
       <div class="container apply-inner">
 
         <p class="eyebrow">Apply</p>
@@ -193,8 +197,7 @@
           internship through the official application form.
         </p>
 
-        <!-- TODO: replace # with the real TechBridge Internship Application Form link -->
-               <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
           Fill the Application Form
         </a>
 
@@ -202,7 +205,7 @@
     </section>
 
     <!-- ===== COMMUNITY: WhatsApp ===== -->
-        <section id="community" class="community">
+    <section id="community" class="community">
       <div class="container community-inner">
 
         <p class="eyebrow">Community</p>
@@ -212,15 +215,15 @@
           official TechBridge WhatsApp community.
         </p>
 
-        <!-- TODO: replace # with the real TechBridge WhatsApp Community link -->
-        <a href="https://chat.whatsapp.com/FqpBvYS4oaK32cXDxc8JIS" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">          Join the WhatsApp Community
+        <a href="https://chat.whatsapp.com/FqpBvYS4oaK32cXDxc8JIS" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          Join the WhatsApp Community
         </a>
 
       </div>
     </section>
 
     <!-- ===== CONTACT: official email ===== -->
-        <section id="contact" class="contact">
+    <section id="contact" class="contact">
       <div class="container contact-inner">
 
         <p class="eyebrow">Contact</p>
@@ -240,11 +243,10 @@
   </main>
 
   <!-- ===== FOOTER ===== -->
-    <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container footer-inner">
 
       <div class="footer-brand">
-        <!-- TODO: replace this text with the logo image once we have the file -->
         <a href="#home" class="logo">
           <img src="images/techbridge-logo.png" alt="TechBridge home">
         </a>
@@ -257,7 +259,8 @@
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="programs.html">Programs</a></li>
-          <li><a href="#internship">Internship</a></li>
+          <li><a href="tasks.html">Roadmap</a></li>
+          <li><a href="challenges.html">Challenges</a></li>
           <li><a href="#apply">Apply</a></li>
           <li><a href="#community">Community</a></li>
         </ul>
