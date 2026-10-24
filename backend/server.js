@@ -8,21 +8,54 @@
 //   POST /api/reset        put one track's tasks back to their starting status
 // =========================================
 
+const fs = require("fs");
 const path = require("path");
 const express = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// The task data. The file holds the starting data; the server keeps a
-// working copy in memory, so status changes last until the server restarts.
+// The task data. tasks.json holds the starting data. The server works on a
+// copy in memory and saves every status change to data/progress.json,
+// so progress is still there after the server restarts.
 const startingTasks = require("./data/tasks.json");
+const progressFile = path.join(__dirname, "data", "progress.json");
+
 let tasks = startingTasks.map(function (task) {
   return { ...task };
 });
 
+// Saves { "taskId": "status" } for every task
+function saveProgress() {
+  const saved = {};
+  tasks.forEach(function (task) {
+    saved[task.id] = task.status;
+  });
+  try {
+    fs.writeFileSync(progressFile, JSON.stringify(saved, null, 2));
+  } catch (error) {
+    console.error("Could not save progress:", error.message);
+  }
+}
+
+// Puts saved statuses back onto the tasks when the server starts
+function loadProgress() {
+  try {
+    const saved = JSON.parse(fs.readFileSync(progressFile, "utf8"));
+    tasks.forEach(function (task) {
+      if (validStatuses.includes(saved[task.id])) {
+        task.status = saved[task.id];
+      }
+    });
+  } catch (error) {
+    // No saved progress yet: the starting statuses are used
+  }
+}
+
 const validStatuses = ["completed", "in-progress", "not-started"];
 const validTracks = ["web", "data"];
+
+loadProgress();
 
 
 // =========================================
@@ -96,6 +129,7 @@ app.put("/api/tasks/:id", function (req, res) {
   }
 
   task.status = status;
+  saveProgress();
   res.json(task);
 });
 
@@ -110,6 +144,7 @@ app.post("/api/reset", function (req, res) {
   tasks = tasks.map(function (task, index) {
     return task.track === track ? { ...startingTasks[index] } : task;
   });
+  saveProgress();
 
   res.json(tasks.filter(function (task) {
     return task.track === track;

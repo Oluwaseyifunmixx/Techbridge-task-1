@@ -52,7 +52,7 @@ The dashboard gets its tasks from a small Node.js + Express backend: **Frontend 
 | PUT | `/api/tasks/:id` | Update a task's status. Send `{ "status": "completed" }` (or `in-progress`, `not-started`). Returns 400 for any other status. |
 | POST | `/api/reset` | Extra: put one track's tasks back to their starting status when a new intern registers. Send `{ "track": "web" }`. |
 
-Task status changes are kept in the server's memory, so they last until the server restarts.
+Task status changes are saved to `backend/data/progress.json` (created automatically, not committed), so progress is still there after the server restarts. Delete that file to start from scratch.
 
 ### Run it locally
 
