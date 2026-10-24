@@ -509,6 +509,12 @@ addForm.addEventListener("submit", async function (event) {
     addTitle.focus();
     return;
   }
+  if (addDescription.value.trim() === "") {
+    addError.textContent = "Please describe the task so it is clear what needs to be done.";
+    addError.hidden = false;
+    addDescription.focus();
+    return;
+  }
   addError.hidden = true;
   addSubmit.disabled = true;
   addSubmit.textContent = "Adding...";

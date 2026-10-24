@@ -159,8 +159,8 @@ app.post("/api/tasks", function (req, res) {
   if (title === "" || title.length > 80) {
     return res.status(400).json({ error: "Title is required (80 characters at most)." });
   }
-  if (description.length > 300) {
-    return res.status(400).json({ error: "Description can be 300 characters at most." });
+  if (description === "" || description.length > 300) {
+    return res.status(400).json({ error: "Description is required (300 characters at most)." });
   }
 
   const sameTrack = tasks.filter(function (task) {
@@ -177,8 +177,8 @@ app.post("/api/tasks", function (req, res) {
     title: title,
     day: null,
     difficulty: "Custom",
-    description: description || "A task you added yourself.",
-    details: description || "A task you added yourself.",
+    description: description,
+    details: description,
     skills: [],
     status: "not-started",
     custom: true
