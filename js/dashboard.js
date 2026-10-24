@@ -1,198 +1,57 @@
 // =========================================
 // TECHBRIDGE INTERN DASHBOARD
-// Task 6: progress, task tracker, filters,
-// task details and technology explorer
+// Task 6: progress, task tracker, filters, task details, technology explorer
+// Task 7: the tasks now come from the Node.js + Express API
+//   Frontend -> fetch() -> REST API -> Task data
 // =========================================
 
 
 // =========================================
-// 1. DATA
-// Tasks and technologies are ARRAYS of OBJECTS.
-// The page is built from this data.
+// 1. API SETTINGS
 // =========================================
 
-const webTasks = [
-  {
-    number: 1,
-    title: "Build the TechBridge Homepage",
-    day: 1,
-    difficulty: "Beginner",
-    description: "Create the first version of the TechBridge website using HTML and CSS.",
-    details: "Build a responsive homepage that introduces TechBridge, its programs and the 30-day internship.",
-    skills: ["HTML5", "CSS3", "Responsive design"],
-    status: "in-progress"
-  },
-  {
-    number: 2,
-    title: "Build the TechBridge Programs Experience",
-    day: 4,
-    difficulty: "Beginner",
-    description: "Create a Programs experience presenting TechBridge's available learning programs.",
-    details: "Design a page that explains the Data Analytics and Web Development programs and compares them side by side.",
-    skills: ["Semantic HTML", "CSS Grid", "Layout"],
-    status: "not-started"
-  },
-  {
-    number: 3,
-    title: "Build the Internship Tasks Experience",
-    day: 8,
-    difficulty: "Beginner → Intermediate",
-    description: "Create an interface that presents the TechBridge internship tasks and helps users understand the internship journey.",
-    details: "Present the internship tasks in a clear, easy-to-scan layout that shows the 30-day journey.",
-    skills: ["HTML5", "CSS3", "Information design"],
-    status: "not-started"
-  },
-  {
-    number: 4,
-    title: "Build an Interactive Internship Roadmap",
-    day: 11,
-    difficulty: "Beginner → Intermediate",
-    description: "Use JavaScript to allow visitors to switch between the Data Analytics and Web Development internship tracks.",
-    details: "Store the tasks as JavaScript data and render them on the page, switching tracks without a refresh.",
-    skills: ["JavaScript", "DOM manipulation", "Event listeners"],
-    status: "not-started"
-  },
-  {
-    number: 5,
-    title: "Build the Intern Registration Experience",
-    day: 15,
-    difficulty: "Intermediate",
-    description: "Create a professional registration and onboarding interface for TechBridge interns.",
-    details: "Design a registration flow with clear fields, helpful messages and an onboarding feel.",
-    skills: ["Forms", "Validation", "UX"],
-    status: "not-started"
-  },
-  {
-    number: 6,
-    title: "Build the Task Submission System",
-    day: 19,
-    difficulty: "Intermediate",
-    description: "Create an interface through which interns can prepare and submit their task work.",
-    details: "Build a submission interface where interns can prepare their work and send it for review.",
-    skills: ["Forms", "JavaScript", "State handling"],
-    status: "not-started"
-  },
-  {
-    number: 7,
-    title: "Build the Intern Dashboard",
-    day: 22,
-    difficulty: "Intermediate",
-    description: "Create a dashboard where an intern can view their profile, progress, tasks and submissions.",
-    details: "Bring progress, tasks and submissions together in one dashboard that updates live.",
-    skills: ["JavaScript", "Filtering", "Progress calculations"],
-    status: "not-started"
-  },
-  {
-    number: 8,
-    title: "Build the Complete TechBridge Internship Platform",
-    day: 26,
-    difficulty: "Intermediate",
-    description: "Combine the different components created during the internship into a complete TechBridge platform.",
-    details: "Connect every page and feature built so far into one polished, working platform.",
-    skills: ["Project organization", "Integration", "Responsive design"],
-    status: "not-started"
+// Where the API lives:
+// - opened from the Express server (port 3000): same address, no prefix
+// - opened any other way on your computer (Live Server, a file): localhost:3000
+// - on the live site: the deployed backend address from js/config.js
+const API_BASE = (function () {
+  const isLocal = location.protocol === "file:" ||
+    location.hostname === "localhost" ||
+    location.hostname === "127.0.0.1";
+
+  if (location.port === "3000") {
+    return "";
   }
-];
-
-const dataTasks = [
-  {
-    number: 1,
-    title: "Data Cleaning Basics",
-    day: 1,
-    difficulty: "Beginner",
-    description: "Clean a messy dataset using Google Sheets or Excel. Identify and fix duplicate rows, blank cells, inconsistent formatting, and incorrect data types.",
-    details: "Take a messy spreadsheet and turn it into a clean, reliable dataset ready for analysis.",
-    skills: ["Google Sheets", "Excel", "Data cleaning"],
-    status: "in-progress"
-  },
-  {
-    number: 2,
-    title: "Formulas & Pivot Tables",
-    day: 4,
-    difficulty: "Beginner",
-    description: "Use spreadsheet formulas and Pivot Tables to answer questions and extract useful insights from a dataset.",
-    details: "Summarise a dataset with formulas and Pivot Tables to answer real questions about it.",
-    skills: ["Formulas", "Pivot Tables", "Summarising data"],
-    status: "not-started"
-  },
-  {
-    number: 3,
-    title: "Data Visualization",
-    day: 8,
-    difficulty: "Beginner → Intermediate",
-    description: "Create charts and a simple dashboard that communicate useful insights from a dataset.",
-    details: "Choose the right charts and arrange them in a simple dashboard that tells a clear story.",
-    skills: ["Charts", "Dashboards", "Data storytelling"],
-    status: "not-started"
-  },
-  {
-    number: 4,
-    title: "Introduction to SQL",
-    day: 11,
-    difficulty: "Beginner → Intermediate",
-    description: "Practice basic SQL queries and use them to answer real-world questions about data.",
-    details: "Write SELECT queries with filtering and sorting to pull answers out of a database.",
-    skills: ["SQL", "SELECT queries", "Filtering"],
-    status: "not-started"
-  },
-  {
-    number: 5,
-    title: "SQL Joins & Aggregations",
-    day: 15,
-    difficulty: "Intermediate",
-    description: "Use JOIN, GROUP BY and aggregate functions such as COUNT, SUM and AVG to analyze information across multiple tables.",
-    details: "Combine several tables and summarise them with grouping and aggregate functions.",
-    skills: ["JOIN", "GROUP BY", "COUNT, SUM, AVG"],
-    status: "not-started"
-  },
-  {
-    number: 6,
-    title: "Lookup Functions & Data Wrangling",
-    day: 19,
-    difficulty: "Intermediate",
-    description: "Use VLOOKUP or XLOOKUP to combine related datasets and handle data mismatches.",
-    details: "Merge related datasets with lookup functions and fix the mismatches you find along the way.",
-    skills: ["VLOOKUP", "XLOOKUP", "Data wrangling"],
-    status: "not-started"
-  },
-  {
-    number: 7,
-    title: "Mini Analysis Project",
-    day: 22,
-    difficulty: "Intermediate",
-    description: "Complete a small end-to-end analysis involving data cleaning, formulas, Pivot Tables, charts and recommendations.",
-    details: "Run a small analysis from raw data to recommendations, using everything learned so far.",
-    skills: ["Cleaning", "Pivot Tables", "Recommendations"],
-    status: "not-started"
-  },
-  {
-    number: 8,
-    title: "Capstone Project",
-    day: 26,
-    difficulty: "Intermediate",
-    description: "Complete a larger project combining spreadsheet analysis and SQL using at least two related tables.",
-    details: "Finish a larger project that combines spreadsheet analysis and SQL across related tables.",
-    skills: ["Spreadsheets", "SQL", "Project work"],
-    status: "not-started"
+  if (isLocal) {
+    return "http://localhost:3000";
   }
-];
+  return window.TECHBRIDGE_API_URL || "";
+})();
 
-const tracks = {
-  web: { name: "Web Development", tasks: webTasks },
-  data: { name: "Data Analytics", tasks: dataTasks }
-};
+// Sends a request to the API and returns the JSON answer.
+// Throws an error if the server cannot be reached or says something is wrong.
+async function api(path, options) {
+  const response = await fetch(API_BASE + path, options);
+  if (!response.ok) {
+    throw new Error("The server answered with " + response.status);
+  }
+  return response.json();
+}
 
-// Every new intern starts from these statuses
-[webTasks, dataTasks].forEach(function (list) {
-  list.forEach(function (task) {
-    task.startStatus = task.status;
-  });
-});
+
+// =========================================
+// 2. STATIC DATA (not task data)
+// =========================================
 
 const statusLabels = {
   "completed": "Completed",
   "in-progress": "In Progress",
   "not-started": "Not Started"
+};
+
+const trackNames = {
+  web: "Web Development",
+  data: "Data Analytics"
 };
 
 const technologies = {
@@ -245,13 +104,13 @@ const technologies = {
 };
 
 
+
 // =========================================
-// 2. STATE AND PAGE ELEMENTS
+// 3. STATE AND PAGE ELEMENTS
 // =========================================
 
-const STORAGE_KEY = "techbridge-dashboard-tasks";
 let currentTrack = "web";
-let tasks = tracks[currentTrack].tasks;
+let tasks = [];            // filled from the API
 let currentFilter = "all";
 
 const taskGrid = document.getElementById("dash-task-grid");
@@ -270,6 +129,7 @@ const progressBar = document.getElementById("progress-bar");
 const progressPercent = document.getElementById("progress-percent");
 const celebration = document.getElementById("celebration");
 const internshipStatus = document.getElementById("internship-status");
+const backendStatus = document.getElementById("backend-status");
 
 const taskDialog = document.getElementById("task-dialog");
 const taskDialogMeta = document.getElementById("task-dialog-meta");
@@ -278,44 +138,27 @@ const taskDialogBody = document.getElementById("task-dialog-body");
 
 const techPanel = document.getElementById("tech-panel");
 
-
-// =========================================
-// 3. SAVE AND LOAD (Local Storage)
-// Only the statuses are saved. If storage is
-// blocked or empty, the default statuses are used.
-// =========================================
-
-function saveProgress() {
-  try {
-    const saved = {};
-    tasks.forEach(function (task) {
-      saved[task.number] = task.status;
-    });
-    localStorage.setItem(STORAGE_KEY + "-" + currentTrack, JSON.stringify(saved));
-  } catch (error) {
-    // Storage unavailable: the dashboard still works for this visit
-  }
-}
-
-function loadProgress() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY + "-" + currentTrack));
-    if (!saved) {
-      return;
-    }
-    tasks.forEach(function (task) {
-      if (statusLabels[saved[task.number]]) {
-        task.status = saved[task.number];
-      }
-    });
-  } catch (error) {
-    // Ignore unreadable saved data
-  }
+// Makes text from the API safe to place inside HTML
+function escapeHTML(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
 }
 
 
 // =========================================
-// 4. PROGRESS
+// 4. BACKEND STATUS INDICATOR
+// =========================================
+
+function setBackendStatus(state) {
+  const labels = { checking: "Checking...", connected: "Connected", offline: "Offline" };
+  backendStatus.textContent = labels[state];
+  backendStatus.className = "backend-pill backend-" + state;
+}
+
+
+// =========================================
+// 5. PROGRESS
 // =========================================
 
 function updateProgress() {
@@ -323,7 +166,7 @@ function updateProgress() {
   const completed = tasks.filter(function (task) {
     return task.status === "completed";
   }).length;
-  const percent = Math.round((completed / total) * 1000) / 10; // one decimal, e.g. 37.5
+  const percent = total === 0 ? 0 : Math.round((completed / total) * 1000) / 10; // e.g. 37.5
 
   totalCount.textContent = total;
   completedCount.textContent = completed;
@@ -339,7 +182,7 @@ function updateProgress() {
   progressFill.style.width = percent + "%";
   progressBar.setAttribute("aria-valuenow", percent);
 
-  const allDone = completed === total;
+  const allDone = total > 0 && completed === total;
   celebration.hidden = !allDone;
   internshipStatus.textContent = allDone ? "Completed" : "In Progress";
   internshipStatus.className = "status-pill " + (allDone ? "status-completed" : "status-in-progress");
@@ -347,7 +190,7 @@ function updateProgress() {
 
 
 // =========================================
-// 5. TASK CARDS
+// 6. TASK CARDS
 // =========================================
 
 // Which action button a task gets, depending on its status
@@ -356,9 +199,9 @@ function getActionButton(task) {
     return "";
   }
   if (task.status === "not-started") {
-    return `<button type="button" class="btn btn-secondary" data-action="start" data-number="${task.number}">Start Task</button>`;
+    return `<button type="button" class="btn btn-secondary" data-action="start" data-id="${task.id}">Start Task</button>`;
   }
-  return `<button type="button" class="btn btn-primary" data-action="complete" data-number="${task.number}">Mark as Completed</button>`;
+  return `<button type="button" class="btn btn-primary" data-action="complete" data-id="${task.id}">Mark as Completed</button>`;
 }
 
 function createTaskCard(task) {
@@ -368,10 +211,10 @@ function createTaskCard(task) {
         <p class="task-number">Task ${task.number}</p>
         <span class="status-pill status-${task.status}">${statusLabels[task.status]}</span>
       </div>
-      <h3>${task.title}</h3>
-      <p class="task-description">${task.description}</p>
+      <h3>${escapeHTML(task.title)}</h3>
+      <p class="task-description">${escapeHTML(task.description)}</p>
       <div class="dash-task-actions">
-        <button type="button" class="btn btn-secondary" data-action="view" data-number="${task.number}">View Task</button>
+        <button type="button" class="btn btn-secondary" data-action="view" data-id="${task.id}">View Task</button>
         ${getActionButton(task)}
       </div>
     </li>
@@ -389,7 +232,7 @@ function renderTasks() {
   });
 
   if (visibleTasks.length === 0) {
-    cardsHTML = `<li class="dash-empty">No tasks here yet.</li>`;
+    cardsHTML = `<li class="dash-message">No tasks here yet.</li>`;
   }
   taskGrid.innerHTML = cardsHTML;
 
@@ -404,39 +247,120 @@ function renderTasks() {
 function refresh() {
   renderTasks();
   updateProgress();
-  saveProgress();
 }
 
 
 // =========================================
-// 6. TASK ACTIONS (event delegation)
+// 7. LOADING TASKS FROM THE API
+// Shows "Loading tasks..." while waiting, and a clear
+// error message (with a Try again button) if it fails.
+// =========================================
+
+function showLoading() {
+  tasks = [];
+  updateProgress();
+  trackerCount.textContent = "";
+  taskGrid.innerHTML = `<li class="dash-message" role="status"><span class="spinner" aria-hidden="true"></span> Loading tasks...</li>`;
+  setBackendStatus("checking");
+}
+
+function showLoadError() {
+  tasks = [];
+  updateProgress();
+  trackerCount.textContent = "";
+  taskGrid.innerHTML = `
+    <li class="dash-message dash-error" role="alert">
+      <strong>Unable to load tasks.</strong>
+      <span>Please check your connection or try again.</span>
+      <button type="button" class="btn btn-primary" data-action="retry">Try again</button>
+    </li>`;
+  setBackendStatus("offline");
+}
+
+// GET /api/tasks?track=web  (or data)
+async function loadTasks() {
+  showLoading();
+  try {
+    tasks = await api("/api/tasks?track=" + currentTrack);
+    setBackendStatus("connected");
+    refresh();
+  } catch (error) {
+    showLoadError();
+  }
+}
+
+
+// =========================================
+// 8. TASK ACTIONS (event delegation)
 // One listener on the grid handles every button.
 // =========================================
 
-function findTask(number) {
+function findTask(id) {
   return tasks.find(function (task) {
-    return task.number === number;
+    return task.id === id;
   });
 }
 
-function openTaskDialog(task) {
-  taskDialogMeta.textContent = "Task " + task.number + " · Day " + task.day + " · " + task.difficulty;
-  taskDialogTitle.textContent = task.title;
+// View Task: GET /api/tasks/:id, shown in a popup
+async function openTaskDialog(id) {
+  taskDialogMeta.textContent = "Task";
+  taskDialogTitle.textContent = "Loading task...";
+  taskDialogBody.innerHTML = `<p role="status"><span class="spinner" aria-hidden="true"></span> Loading task details...</p>`;
+  if (!taskDialog.open) {
+    taskDialog.showModal();
+  }
 
-  let skillsHTML = "";
-  task.skills.forEach(function (skill) {
-    skillsHTML += `<li>${skill}</li>`;
-  });
+  try {
+    const task = await api("/api/tasks/" + id);
+    setBackendStatus("connected");
 
-  taskDialogBody.innerHTML = `
-    <p><span class="status-pill status-${task.status}">${statusLabels[task.status]}</span></p>
-    <p>${task.description}</p>
-    <h3>What you will do</h3>
-    <p>${task.details}</p>
-    <h3>Skills</h3>
-    <ul class="dialog-list">${skillsHTML}</ul>
-  `;
-  taskDialog.showModal();
+    taskDialogMeta.textContent = "Task " + task.number + " · Day " + task.day + " · " + task.difficulty;
+    taskDialogTitle.textContent = task.title;
+
+    let skillsHTML = "";
+    task.skills.forEach(function (skill) {
+      skillsHTML += `<li>${escapeHTML(skill)}</li>`;
+    });
+
+    taskDialogBody.innerHTML = `
+      <p><span class="status-pill status-${task.status}">${statusLabels[task.status]}</span></p>
+      <p>${escapeHTML(task.description)}</p>
+      <h3>What you will do</h3>
+      <p>${escapeHTML(task.details)}</p>
+      <h3>Skills</h3>
+      <ul class="dialog-list">${skillsHTML}</ul>
+    `;
+  } catch (error) {
+    setBackendStatus("offline");
+    taskDialogTitle.textContent = "Unable to load task";
+    taskDialogBody.innerHTML = `<p role="alert">Please check your connection or try again.</p>`;
+  }
+}
+
+// Start Task / Mark as Completed: PUT /api/tasks/:id
+async function updateTaskStatus(id, status, button) {
+  button.disabled = true;
+  button.textContent = "Saving...";
+
+  try {
+    const updated = await api("/api/tasks/" + id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: status })
+    });
+
+    // Replace the old copy of the task with the one the server sent back
+    tasks = tasks.map(function (task) {
+      return task.id === updated.id ? updated : task;
+    });
+    setBackendStatus("connected");
+    refresh();
+    showToast(status === "completed" ? "Task " + updated.number + " marked as completed" : "Task " + updated.number + " started");
+  } catch (error) {
+    setBackendStatus("offline");
+    renderTasks();
+    showToast("Could not update the task. Is the backend running?");
+  }
 }
 
 taskGrid.addEventListener("click", function (event) {
@@ -445,19 +369,21 @@ taskGrid.addEventListener("click", function (event) {
     return;
   }
 
-  const task = findTask(Number(button.dataset.number));
   const action = button.dataset.action;
-
-  if (action === "view") {
-    openTaskDialog(task);
+  if (action === "retry") {
+    loadTasks();
     return;
   }
 
-  task.status = action === "start" ? "in-progress" : "completed";
-  refresh();
-  showToast(action === "start" ? "Task " + task.number + " started" : "Task " + task.number + " marked as completed");
+  const id = Number(button.dataset.id);
+  if (action === "view") {
+    openTaskDialog(id);
+  } else if (action === "start") {
+    updateTaskStatus(id, "in-progress", button);
+  } else if (action === "complete") {
+    updateTaskStatus(id, "completed", button);
+  }
 });
-
 
 // Small notice that fades away after a moment
 let toastTimer;
@@ -481,7 +407,9 @@ continueBtn.addEventListener("click", function () {
   });
 
   if (next) {
-    openTaskDialog(next);
+    openTaskDialog(next.id);
+  } else if (tasks.length === 0) {
+    showToast("The tasks have not loaded yet");
   } else {
     showToast("All tasks are completed");
   }
@@ -489,7 +417,7 @@ continueBtn.addEventListener("click", function () {
 
 
 // =========================================
-// 7. FILTER BUTTONS
+// 9. FILTER BUTTONS
 // =========================================
 
 const statusFilterButtons = document.querySelectorAll("[data-status]");
@@ -506,10 +434,10 @@ statusFilterButtons.forEach(function (button) {
 
 
 // =========================================
-// 7b. REGISTRATION
+// 10. REGISTRATION
 // The intern registers once with a name and a track.
 // After that only that track's tasks are shown.
-// (Demo only: the profile lives in this browser.)
+// (The profile is kept in this browser; the tasks come from the API.)
 // =========================================
 
 const PROFILE_KEY = "techbridge-dashboard-profile";
@@ -526,7 +454,7 @@ const avatar = document.getElementById("avatar");
 function getProfile() {
   try {
     const profile = JSON.parse(localStorage.getItem(PROFILE_KEY));
-    if (profile && profile.name && tracks[profile.track]) {
+    if (profile && profile.name && trackNames[profile.track]) {
       return profile;
     }
   } catch (error) {
@@ -537,11 +465,10 @@ function getProfile() {
 
 function showDashboard(profile) {
   currentTrack = profile.track;
-  tasks = tracks[currentTrack].tasks;
   currentFilter = "all";
 
   welcomeHeading.textContent = "Welcome back, " + profile.name;
-  trackLabel.textContent = tracks[currentTrack].name + " Intern";
+  trackLabel.textContent = trackNames[currentTrack] + " Intern";
   avatar.textContent = profile.name.charAt(0).toUpperCase();
 
   statusFilterButtons.forEach(function (button) {
@@ -550,8 +477,7 @@ function showDashboard(profile) {
 
   registerSection.hidden = true;
   dashboardView.hidden = false;
-  loadProgress();
-  refresh();
+  loadTasks();
 }
 
 function showRegistration() {
@@ -559,7 +485,7 @@ function showRegistration() {
   registerSection.hidden = false;
 }
 
-registerForm.addEventListener("submit", function (event) {
+registerForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const name = nameInput.value.trim();
@@ -569,18 +495,6 @@ registerForm.addEventListener("submit", function (event) {
     return;
   }
   nameError.hidden = true;
-
-  // A new registration starts fresh: clear any earlier progress
-  Object.keys(tracks).forEach(function (key) {
-    tracks[key].tasks.forEach(function (task) {
-      task.status = task.startStatus;
-    });
-    try {
-      localStorage.removeItem(STORAGE_KEY + "-" + key);
-    } catch (error) {
-      // Nothing to clear
-    }
-  });
 
   const profile = {
     name: name,
@@ -592,6 +506,18 @@ registerForm.addEventListener("submit", function (event) {
   } catch (error) {
     // Storage unavailable: the dashboard still opens for this visit
   }
+
+  // A new intern starts fresh: POST /api/reset puts the track back to its starting statuses
+  try {
+    await api("/api/reset", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ track: profile.track })
+    });
+  } catch (error) {
+    // If the backend is down, the dashboard shows its error message instead
+  }
+
   showDashboard(profile);
   window.scrollTo(0, 0);
 });
@@ -609,7 +535,7 @@ document.getElementById("signout-btn").addEventListener("click", function () {
 
 
 // =========================================
-// 8. TASK DETAILS POPUP: closing
+// 11. TASK DETAILS POPUP: closing
 // =========================================
 
 document.getElementById("task-dialog-close").addEventListener("click", function () {
@@ -629,7 +555,7 @@ taskDialog.addEventListener("click", function (event) {
 
 
 // =========================================
-// 9. TECHNOLOGY EXPLORER
+// 12. TECHNOLOGY EXPLORER
 // =========================================
 
 function showTechnology(key) {
@@ -671,7 +597,7 @@ techButtons.forEach(function (button) {
 
 
 // =========================================
-// 10. START
+// 13. START
 // =========================================
 
 const savedProfile = getProfile();

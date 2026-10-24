@@ -1,0 +1,258 @@
+[
+  {
+    "id": 1,
+    "track": "web",
+    "number": 1,
+    "title": "Build the TechBridge Homepage",
+    "day": 1,
+    "difficulty": "Beginner",
+    "description": "Create the first version of the TechBridge website using HTML and CSS.",
+    "details": "Build a responsive homepage that introduces TechBridge, its programs and the 30-day internship.",
+    "skills": [
+      "HTML5",
+      "CSS3",
+      "Responsive design"
+    ],
+    "status": "in-progress"
+  },
+  {
+    "id": 2,
+    "track": "web",
+    "number": 2,
+    "title": "Build the TechBridge Programs Experience",
+    "day": 4,
+    "difficulty": "Beginner",
+    "description": "Create a Programs experience presenting TechBridge's available learning programs.",
+    "details": "Design a page that explains the Data Analytics and Web Development programs and compares them side by side.",
+    "skills": [
+      "Semantic HTML",
+      "CSS Grid",
+      "Layout"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 3,
+    "track": "web",
+    "number": 3,
+    "title": "Build the Internship Tasks Experience",
+    "day": 8,
+    "difficulty": "Beginner → Intermediate",
+    "description": "Create an interface that presents the TechBridge internship tasks and helps users understand the internship journey.",
+    "details": "Present the internship tasks in a clear, easy-to-scan layout that shows the 30-day journey.",
+    "skills": [
+      "HTML5",
+      "CSS3",
+      "Information design"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 4,
+    "track": "web",
+    "number": 4,
+    "title": "Build an Interactive Internship Roadmap",
+    "day": 11,
+    "difficulty": "Beginner → Intermediate",
+    "description": "Use JavaScript to allow visitors to switch between the Data Analytics and Web Development internship tracks.",
+    "details": "Store the tasks as JavaScript data and render them on the page, switching tracks without a refresh.",
+    "skills": [
+      "JavaScript",
+      "DOM manipulation",
+      "Event listeners"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 5,
+    "track": "web",
+    "number": 5,
+    "title": "Build the Intern Registration Experience",
+    "day": 15,
+    "difficulty": "Intermediate",
+    "description": "Create a professional registration and onboarding interface for TechBridge interns.",
+    "details": "Design a registration flow with clear fields, helpful messages and an onboarding feel.",
+    "skills": [
+      "Forms",
+      "Validation",
+      "UX"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 6,
+    "track": "web",
+    "number": 6,
+    "title": "Build the Task Submission System",
+    "day": 19,
+    "difficulty": "Intermediate",
+    "description": "Create an interface through which interns can prepare and submit their task work.",
+    "details": "Build a submission interface where interns can prepare their work and send it for review.",
+    "skills": [
+      "Forms",
+      "JavaScript",
+      "State handling"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 7,
+    "track": "web",
+    "number": 7,
+    "title": "Build the Intern Dashboard",
+    "day": 22,
+    "difficulty": "Intermediate",
+    "description": "Create a dashboard where an intern can view their profile, progress, tasks and submissions.",
+    "details": "Bring progress, tasks and submissions together in one dashboard that updates live.",
+    "skills": [
+      "JavaScript",
+      "Filtering",
+      "Progress calculations"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 8,
+    "track": "web",
+    "number": 8,
+    "title": "Build the Complete TechBridge Internship Platform",
+    "day": 26,
+    "difficulty": "Intermediate",
+    "description": "Combine the different components created during the internship into a complete TechBridge platform.",
+    "details": "Connect every page and feature built so far into one polished, working platform.",
+    "skills": [
+      "Project organization",
+      "Integration",
+      "Responsive design"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 9,
+    "track": "data",
+    "number": 1,
+    "title": "Data Cleaning Basics",
+    "day": 1,
+    "difficulty": "Beginner",
+    "description": "Clean a messy dataset using Google Sheets or Excel. Identify and fix duplicate rows, blank cells, inconsistent formatting, and incorrect data types.",
+    "details": "Take a messy spreadsheet and turn it into a clean, reliable dataset ready for analysis.",
+    "skills": [
+      "Google Sheets",
+      "Excel",
+      "Data cleaning"
+    ],
+    "status": "in-progress"
+  },
+  {
+    "id": 10,
+    "track": "data",
+    "number": 2,
+    "title": "Formulas & Pivot Tables",
+    "day": 4,
+    "difficulty": "Beginner",
+    "description": "Use spreadsheet formulas and Pivot Tables to answer questions and extract useful insights from a dataset.",
+    "details": "Summarise a dataset with formulas and Pivot Tables to answer real questions about it.",
+    "skills": [
+      "Formulas",
+      "Pivot Tables",
+      "Summarising data"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 11,
+    "track": "data",
+    "number": 3,
+    "title": "Data Visualization",
+    "day": 8,
+    "difficulty": "Beginner → Intermediate",
+    "description": "Create charts and a simple dashboard that communicate useful insights from a dataset.",
+    "details": "Choose the right charts and arrange them in a simple dashboard that tells a clear story.",
+    "skills": [
+      "Charts",
+      "Dashboards",
+      "Data storytelling"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 12,
+    "track": "data",
+    "number": 4,
+    "title": "Introduction to SQL",
+    "day": 11,
+    "difficulty": "Beginner → Intermediate",
+    "description": "Practice basic SQL queries and use them to answer real-world questions about data.",
+    "details": "Write SELECT queries with filtering and sorting to pull answers out of a database.",
+    "skills": [
+      "SQL",
+      "SELECT queries",
+      "Filtering"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 13,
+    "track": "data",
+    "number": 5,
+    "title": "SQL Joins & Aggregations",
+    "day": 15,
+    "difficulty": "Intermediate",
+    "description": "Use JOIN, GROUP BY and aggregate functions such as COUNT, SUM and AVG to analyze information across multiple tables.",
+    "details": "Combine several tables and summarise them with grouping and aggregate functions.",
+    "skills": [
+      "JOIN",
+      "GROUP BY",
+      "COUNT, SUM, AVG"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 14,
+    "track": "data",
+    "number": 6,
+    "title": "Lookup Functions & Data Wrangling",
+    "day": 19,
+    "difficulty": "Intermediate",
+    "description": "Use VLOOKUP or XLOOKUP to combine related datasets and handle data mismatches.",
+    "details": "Merge related datasets with lookup functions and fix the mismatches you find along the way.",
+    "skills": [
+      "VLOOKUP",
+      "XLOOKUP",
+      "Data wrangling"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 15,
+    "track": "data",
+    "number": 7,
+    "title": "Mini Analysis Project",
+    "day": 22,
+    "difficulty": "Intermediate",
+    "description": "Complete a small end-to-end analysis involving data cleaning, formulas, Pivot Tables, charts and recommendations.",
+    "details": "Run a small analysis from raw data to recommendations, using everything learned so far.",
+    "skills": [
+      "Cleaning",
+      "Pivot Tables",
+      "Recommendations"
+    ],
+    "status": "not-started"
+  },
+  {
+    "id": 16,
+    "track": "data",
+    "number": 8,
+    "title": "Capstone Project",
+    "day": 26,
+    "difficulty": "Intermediate",
+    "description": "Complete a larger project combining spreadsheet analysis and SQL using at least two related tables.",
+    "details": "Finish a larger project that combines spreadsheet analysis and SQL across related tables.",
+    "skills": [
+      "Spreadsheets",
+      "SQL",
+      "Project work"
+    ],
+    "status": "not-started"
+  }
+]
