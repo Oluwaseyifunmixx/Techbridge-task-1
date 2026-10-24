@@ -12,6 +12,7 @@ Website for **TechBridge by Baselink Services Limited**, built for the TechBridg
 - **Programs** (`programs.html`), Task 2: a dedicated page explaining the Data Analytics and Web Development programs, the skills each one introduces, and how they compare.
 - **Internship Roadmap** (`tasks.html`), Tasks 3 and 4: the 30-day internship journey as an interactive roadmap. Visitors switch between the Data Analytics and Web Development tracks to see each track's 8 tasks, days, descriptions, and difficulty levels, without refreshing the page.
 - **Challenge Hub** (`challenges.html`), Task 5: practical challenges from both tracks that visitors can filter by track and difficulty, with a details popup for each challenge.
+- **Intern Dashboard** (`dashboard.html`), Task 6: interns register with a name and a track (Web Development or Data Analytics) and see only their own 8 tasks. The dashboard has a live progress ring and bar, an interactive task tracker (mark complete, filter by status, view details), a link to the Challenge Hub, and a Technology Explorer covering Next.js, Vue.js, Angular and backend development. Registration and progress are saved in Local Storage (front-end demo, no backend).
 
 ## Built with
 
@@ -45,9 +46,14 @@ No frameworks.
     ├── programs.html
     ├── tasks.html
     ├── challenges.html
+    ├── dashboard.html
     ├── style.css
     ├── script.js          (Roadmap page)
     ├── challenges.js      (Challenge Hub page)
+    ├── css/
+    │   └── dashboard.css  (Dashboard page)
+    ├── js/
+    │   └── dashboard.js   (Dashboard page)
     ├── README.md
     └── images/
         └── techbridge-logo.png
