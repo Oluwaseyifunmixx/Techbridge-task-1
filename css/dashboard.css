@@ -790,3 +790,55 @@
     animation-duration: 2.5s;
   }
 }
+
+/* ----- Search, add task and delete (optional challenges) ----- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.tracker-tools {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 640px;
+  margin: 0 auto 1rem;
+}
+
+.tracker-tools .field-input {
+  flex: 1;
+}
+
+.add-gap {
+  margin-top: 1rem;
+}
+
+#add-description {
+  resize: vertical;
+}
+
+.btn-delete {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: none;
+  color: #B42318;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  color: #7A1209;
+}
+
+@media (max-width: 600px) {
+  .tracker-tools {
+    flex-direction: column;
+  }
+}

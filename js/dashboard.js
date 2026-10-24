@@ -112,6 +112,7 @@ const technologies = {
 let currentTrack = "web";
 let tasks = [];            // filled from the API
 let currentFilter = "all";
+let searchText = "";
 
 const taskGrid = document.getElementById("dash-task-grid");
 const trackerCount = document.getElementById("tracker-count");
@@ -130,6 +131,7 @@ const progressPercent = document.getElementById("progress-percent");
 const celebration = document.getElementById("celebration");
 const internshipStatus = document.getElementById("internship-status");
 const backendStatus = document.getElementById("backend-status");
+const summaryTotal = document.getElementById("summary-total");
 
 const taskDialog = document.getElementById("task-dialog");
 const taskDialogMeta = document.getElementById("task-dialog-meta");
@@ -171,6 +173,7 @@ function updateProgress() {
   totalCount.textContent = total;
   completedCount.textContent = completed;
   completedText.textContent = completed;
+  summaryTotal.textContent = total;
   activeCount.textContent = tasks.filter(function (task) {
     return task.status === "in-progress";
   }).length;
@@ -208,7 +211,7 @@ function createTaskCard(task) {
   return `
     <li class="dash-task status-${task.status}">
       <div class="dash-task-top">
-        <p class="task-number">Task ${task.number}</p>
+        <p class="task-number">Task ${task.number}${task.custom ? " · Added by you" : ""}</p>
         <span class="status-pill status-${task.status}">${statusLabels[task.status]}</span>
       </div>
       <h3>${escapeHTML(task.title)}</h3>
@@ -216,14 +219,21 @@ function createTaskCard(task) {
       <div class="dash-task-actions">
         <button type="button" class="btn btn-secondary" data-action="view" data-id="${task.id}">View Task</button>
         ${getActionButton(task)}
+        ${task.custom ? `<button type="button" class="btn-delete" data-action="delete" data-id="${task.id}">Delete</button>` : ""}
       </div>
     </li>
   `;
 }
 
 function renderTasks() {
+  const query = searchText.trim().toLowerCase();
+
   const visibleTasks = tasks.filter(function (task) {
-    return currentFilter === "all" || task.status === currentFilter;
+    const matchesStatus = currentFilter === "all" || task.status === currentFilter;
+    const matchesSearch = query === "" ||
+      task.title.toLowerCase().includes(query) ||
+      task.description.toLowerCase().includes(query);
+    return matchesStatus && matchesSearch;
   });
 
   let cardsHTML = "";
@@ -232,12 +242,16 @@ function renderTasks() {
   });
 
   if (visibleTasks.length === 0) {
-    cardsHTML = `<li class="dash-message">No tasks here yet.</li>`;
+    cardsHTML = query === ""
+      ? `<li class="dash-message">No tasks here yet.</li>`
+      : `<li class="dash-message">No tasks match "${escapeHTML(searchText.trim())}".</li>`;
   }
   taskGrid.innerHTML = cardsHTML;
 
-  if (currentFilter === "all") {
+  if (currentFilter === "all" && query === "") {
     trackerCount.textContent = "Showing all " + tasks.length + " tasks";
+  } else if (query !== "") {
+    trackerCount.textContent = "Showing " + visibleTasks.length + " of " + tasks.length + " tasks";
   } else {
     trackerCount.textContent = "Showing " + visibleTasks.length + " " + statusLabels[currentFilter] + " task(s)";
   }
@@ -314,7 +328,7 @@ async function openTaskDialog(id) {
     const task = await api("/api/tasks/" + id);
     setBackendStatus("connected");
 
-    taskDialogMeta.textContent = "Task " + task.number + " · Day " + task.day + " · " + task.difficulty;
+    taskDialogMeta.textContent = "Task " + task.number + (task.day ? " · Day " + task.day : "") + " · " + task.difficulty;
     taskDialogTitle.textContent = task.title;
 
     let skillsHTML = "";
@@ -327,8 +341,7 @@ async function openTaskDialog(id) {
       <p>${escapeHTML(task.description)}</p>
       <h3>What you will do</h3>
       <p>${escapeHTML(task.details)}</p>
-      <h3>Skills</h3>
-      <ul class="dialog-list">${skillsHTML}</ul>
+      ${task.skills.length > 0 ? `<h3>Skills</h3><ul class="dialog-list">${skillsHTML}</ul>` : ""}
     `;
   } catch (error) {
     setBackendStatus("offline");
@@ -363,6 +376,26 @@ async function updateTaskStatus(id, status, button) {
   }
 }
 
+// DELETE /api/tasks/:id (only tasks the intern added themselves)
+async function deleteTask(id, button) {
+  button.disabled = true;
+  button.textContent = "Deleting...";
+
+  try {
+    await api("/api/tasks/" + id, { method: "DELETE" });
+    tasks = tasks.filter(function (task) {
+      return task.id !== id;
+    });
+    setBackendStatus("connected");
+    refresh();
+    showToast("Task deleted");
+  } catch (error) {
+    setBackendStatus("offline");
+    renderTasks();
+    showToast("Could not delete the task. Is the backend running?");
+  }
+}
+
 taskGrid.addEventListener("click", function (event) {
   const button = event.target.closest("button[data-action]");
   if (!button) {
@@ -382,6 +415,8 @@ taskGrid.addEventListener("click", function (event) {
     updateTaskStatus(id, "in-progress", button);
   } else if (action === "complete") {
     updateTaskStatus(id, "completed", button);
+  } else if (action === "delete") {
+    deleteTask(id, button);
   }
 });
 
@@ -434,6 +469,81 @@ statusFilterButtons.forEach(function (button) {
 
 
 // =========================================
+// 9b. SEARCH AND ADD A TASK (optional challenges)
+// =========================================
+
+document.getElementById("task-search").addEventListener("input", function (event) {
+  searchText = event.target.value;
+  renderTasks();
+});
+
+const addDialog = document.getElementById("add-dialog");
+const addForm = document.getElementById("add-form");
+const addTitle = document.getElementById("add-title");
+const addDescription = document.getElementById("add-description");
+const addError = document.getElementById("add-error");
+const addSubmit = document.getElementById("add-submit");
+
+document.getElementById("add-task-btn").addEventListener("click", function () {
+  addForm.reset();
+  addError.hidden = true;
+  addDialog.showModal();
+  addTitle.focus();
+});
+
+document.getElementById("add-dialog-close").addEventListener("click", function () {
+  addDialog.close();
+});
+
+document.getElementById("add-cancel").addEventListener("click", function () {
+  addDialog.close();
+});
+
+// POST /api/tasks
+addForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  if (addTitle.value.trim() === "") {
+    addError.textContent = "Please give your task a title.";
+    addError.hidden = false;
+    addTitle.focus();
+    return;
+  }
+  addError.hidden = true;
+  addSubmit.disabled = true;
+  addSubmit.textContent = "Adding...";
+
+  try {
+    const created = await api("/api/tasks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        track: currentTrack,
+        title: addTitle.value.trim(),
+        description: addDescription.value.trim()
+      })
+    });
+
+    tasks.push(created);
+    setBackendStatus("connected");
+    currentFilter = "all";
+    statusFilterButtons.forEach(function (button) {
+      button.setAttribute("aria-pressed", button.dataset.status === "all" ? "true" : "false");
+    });
+    refresh();
+    addDialog.close();
+    showToast("Task added");
+  } catch (error) {
+    addError.textContent = "Could not add the task. Please check your connection or try again.";
+    addError.hidden = false;
+  }
+
+  addSubmit.disabled = false;
+  addSubmit.textContent = "Add task";
+});
+
+
+// =========================================
 // 10. REGISTRATION
 // The intern registers once with a name and a track.
 // After that only that track's tasks are shown.
@@ -466,6 +576,8 @@ function getProfile() {
 function showDashboard(profile) {
   currentTrack = profile.track;
   currentFilter = "all";
+  searchText = "";
+  document.getElementById("task-search").value = "";
 
   welcomeHeading.textContent = "Welcome back, " + profile.name;
   trackLabel.textContent = trackNames[currentTrack] + " Intern";

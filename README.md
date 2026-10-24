@@ -50,9 +50,13 @@ The dashboard gets its tasks from a small Node.js + Express backend: **Frontend 
 | GET | `/api/tasks` | Get all tasks. Add `?track=web` or `?track=data` for one internship track. |
 | GET | `/api/tasks/:id` | Get one task. Used by **View Task**. Returns 404 if the task does not exist. |
 | PUT | `/api/tasks/:id` | Update a task's status. Send `{ "status": "completed" }` (or `in-progress`, `not-started`). Returns 400 for any other status. |
+| POST | `/api/tasks` | Optional challenge: add a new task. Send `{ "track": "web", "title": "...", "description": "..." }`. Returns the new task (201), or 400 if the title or track is missing or invalid. |
+| DELETE | `/api/tasks/:id` | Optional challenge: delete a task. Returns the deleted task, or 404 if it does not exist. The dashboard only offers Delete on tasks the intern added. |
 | POST | `/api/reset` | Extra: put one track's tasks back to their starting status when a new intern registers. Send `{ "track": "web" }`. |
 
-Task status changes are saved to `backend/data/progress.json` (created automatically, not committed), so progress is still there after the server restarts. Delete that file to start from scratch.
+Search is built into the dashboard: type in the search box to filter the loaded tasks by title or description, together with the status filters.
+
+Task changes (status updates and added tasks) are saved to `backend/data/progress.json` (created automatically, not committed), so progress is still there after the server restarts. Delete that file to start from scratch.
 
 ### Run it locally
 

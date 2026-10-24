@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=5">
-  <link rel="stylesheet" href="css/dashboard.css?v=7">
+  <link rel="stylesheet" href="css/dashboard.css?v=8">
 </head>
 <body>
 
@@ -141,7 +141,7 @@
 
           <div class="progress-head">
             <h2>Internship Progress</h2>
-            <p class="progress-summary"><span id="completed-text">0</span> / 8 Tasks Completed</p>
+            <p class="progress-summary"><span id="completed-text">0</span> / <span id="summary-total">8</span> Tasks Completed</p>
           </div>
 
           <div class="progress-row">
@@ -153,7 +153,7 @@
           </div>
 
           <p class="celebration" id="celebration" hidden>
-            All 8 tasks completed. Congratulations, you have finished the internship!
+            All tasks completed. Congratulations, you have finished the internship!
           </p>
         </div>
 
@@ -166,7 +166,7 @@
 
         <div class="section-heading">
           <p class="eyebrow">Task Tracker</p>
-          <h2>Your 8 internship tasks</h2>
+          <h2>Your internship tasks</h2>
         </div>
 
         <div class="filter-options" role="group" aria-label="Filter tasks by status">
@@ -174,6 +174,12 @@
           <button type="button" class="filter-btn" data-status="completed" aria-pressed="false">Completed</button>
           <button type="button" class="filter-btn" data-status="in-progress" aria-pressed="false">In Progress</button>
           <button type="button" class="filter-btn" data-status="not-started" aria-pressed="false">Not Started</button>
+        </div>
+
+        <div class="tracker-tools">
+          <label class="visually-hidden" for="task-search">Search tasks</label>
+          <input type="search" id="task-search" class="field-input" placeholder="Search tasks by title or description" autocomplete="off">
+          <button type="button" class="btn btn-primary" id="add-task-btn">+ Add task</button>
         </div>
 
         <p class="results-count" id="tracker-count" aria-live="polite">Showing all tasks</p>
@@ -248,6 +254,34 @@
 
   </dialog>
 
+  <!-- ===== ADD TASK POPUP ===== -->
+  <dialog class="challenge-dialog" id="add-dialog" aria-labelledby="add-dialog-title">
+    <form id="add-form" novalidate>
+      <div class="dialog-header">
+        <div>
+          <p class="dialog-meta">Your own task</p>
+          <h2 id="add-dialog-title">Add a task</h2>
+        </div>
+        <button type="button" class="dialog-close" id="add-dialog-close" aria-label="Close add task form">&times;</button>
+      </div>
+
+      <div class="dialog-body">
+        <label class="field-label" for="add-title">Title</label>
+        <input type="text" id="add-title" class="field-input" maxlength="80" placeholder="e.g. Practice flexbox" required>
+
+        <label class="field-label add-gap" for="add-description">Description (optional)</label>
+        <textarea id="add-description" class="field-input" rows="3" maxlength="300" placeholder="What do you want to get done?"></textarea>
+
+        <p class="field-error" id="add-error" role="alert" hidden></p>
+      </div>
+
+      <div class="dialog-footer">
+        <button type="submit" class="btn btn-primary" id="add-submit">Add task</button>
+        <button type="button" class="btn btn-secondary" id="add-cancel">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- ===== FOOTER ===== -->
@@ -300,6 +334,6 @@
   </footer>
 
   <script src="js/config.js?v=1"></script>
-  <script src="js/dashboard.js?v=6"></script>
+  <script src="js/dashboard.js?v=7"></script>
 </body>
 </html>
