@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The TechBridge Intern Dashboard: track your internship progress, manage your 8 tasks, explore the Challenge Hub and learn about modern web technologies.">
+  <title>Intern Dashboard | TechBridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="css/dashboard.css?v=6">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="logo">
+        <img src="images/techbridge-logo.png" alt="TechBridge home">
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+      </label>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="tasks.html">Roadmap</a></li>
+          <li><a href="challenges.html">Challenges</a></li>
+          <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li class="nav-apply"><a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apply Now</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="btn btn-primary header-apply" target="_blank" rel="noopener noreferrer">Apply Now</a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== REGISTRATION (shown until the intern registers) ===== -->
+    <section id="register" class="dash-register" hidden>
+      <div class="container">
+        <form class="register-card" id="register-form" novalidate>
+          <p class="eyebrow">Intern Registration</p>
+          <h1>Track your goals and watch your growth</h1>
+          <p class="register-lead">Tell us your name and choose your internship track. Your dashboard will show only your own tasks, so you can see every step of your progress.</p>
+
+          <label class="field-label" for="intern-name">Your name</label>
+          <input type="text" id="intern-name" class="field-input" placeholder="e.g. Dev" maxlength="30" autocomplete="given-name" required>
+          <p class="field-error" id="name-error" role="alert" hidden>Please enter your name.</p>
+
+          <fieldset class="track-choice">
+            <legend class="field-label">Your track</legend>
+            <label class="track-option">
+              <input type="radio" name="track" value="web" checked>
+              <span><strong>Web Development</strong><small>HTML, CSS, JavaScript and building the TechBridge platform</small></span>
+            </label>
+            <label class="track-option">
+              <input type="radio" name="track" value="data">
+              <span><strong>Data Analytics</strong><small>Spreadsheets, SQL, charts and analysis projects</small></span>
+            </label>
+          </fieldset>
+
+          <button type="submit" class="btn btn-primary btn-large">Start tracking my progress</button>        </form>
+      </div>
+    </section>
+
+    <div id="dashboard-view" hidden>
+
+    <!-- ===== A. WELCOME ===== -->
+    <section id="welcome" class="dash-hero">
+      <div class="container dash-hero-inner">
+
+        <button type="button" class="signout-btn" id="signout-btn">Sign out</button>
+
+        <div class="dash-hero-text">
+          <div class="dash-avatar" id="avatar" aria-hidden="true"></div>
+          <p class="dash-eyebrow">Intern Dashboard</p>
+          <h1 id="welcome-heading">Welcome back</h1>
+          <p class="dash-track" id="track-label">Web Development Intern</p>
+          <p class="dash-hero-lead">
+            Good to see you again. Pick up where you left off, mark tasks as
+            you finish them and watch your progress grow.
+          </p>
+          <p class="dash-status">
+            Internship Status:
+            <span class="status-pill status-in-progress" id="internship-status">In Progress</span>
+          </p>
+          <div class="dash-hero-actions">
+            <button type="button" class="btn btn-primary btn-large" id="continue-btn">Continue Task</button>
+            <a href="challenges.html" class="btn btn-ghost btn-large">Explore Challenges</a>
+          </div>
+        </div>
+
+        <div class="ring-card">
+          <div class="ring" id="ring" role="progressbar" aria-label="Overall internship progress"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="ring-inner">
+              <span class="ring-value" id="ring-value">0%</span>
+              <span class="ring-label">complete</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== PROGRESS ===== -->
+    <section id="progress" class="dash-progress">
+      <div class="container">
+
+        <ul class="stat-grid">
+          <li class="stat-tile">
+            <span class="stat-number" id="total-count">8</span>
+            <span class="stat-label">Total Tasks</span>
+          </li>
+          <li class="stat-tile stat-green">
+            <span class="stat-number" id="completed-count">0</span>
+            <span class="stat-label">Completed</span>
+          </li>
+          <li class="stat-tile stat-amber">
+            <span class="stat-number" id="active-count">0</span>
+            <span class="stat-label">In Progress</span>
+          </li>
+          <li class="stat-tile stat-grey">
+            <span class="stat-number" id="remaining-count">8</span>
+            <span class="stat-label">Tasks Remaining</span>
+          </li>
+        </ul>
+
+        <div class="progress-card">
+          <div class="progress-head">
+            <h2>Internship Progress</h2>
+            <p class="progress-summary"><span id="completed-text">0</span> / 8 Tasks Completed</p>
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-track" role="progressbar" id="progress-bar"
+                 aria-label="Internship progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-percent" id="progress-percent">0%</span>
+          </div>
+
+          <p class="celebration" id="celebration" hidden>
+            All 8 tasks completed. Congratulations, you have finished the internship!
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== TASK TRACKER ===== -->
+    <section id="tracker" class="dash-section dash-section-soft">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="eyebrow">Task Tracker</p>
+          <h2>Your 8 internship tasks</h2>
+        </div>
+
+        <div class="filter-options" role="group" aria-label="Filter tasks by status">
+          <button type="button" class="filter-btn" data-status="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-status="completed" aria-pressed="false">Completed</button>
+          <button type="button" class="filter-btn" data-status="in-progress" aria-pressed="false">In Progress</button>
+          <button type="button" class="filter-btn" data-status="not-started" aria-pressed="false">Not Started</button>
+        </div>
+
+        <p class="results-count" id="tracker-count" aria-live="polite">Showing all tasks</p>
+
+        <ul class="dash-task-grid" id="dash-task-grid"></ul>
+
+        <noscript>
+          <p class="noscript-message">Please turn on JavaScript in your browser to use the dashboard.</p>
+        </noscript>
+
+      </div>
+    </section>
+
+    <!-- ===== CHALLENGE HUB ===== -->
+    <section id="challenge-hub" class="dash-section">
+      <div class="container">
+        <div class="hub-card">
+          <div>
+            <p class="eyebrow">Task 5</p>
+            <h2>Challenge Hub</h2>
+            <p class="hub-count"><strong id="hub-count">8</strong> Challenges Available</p>
+            <p>Practice with hands-on challenges from both TechBridge tracks.</p>
+          </div>
+          <a href="challenges.html" class="btn btn-primary btn-large">Explore Challenges</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MODERN WEB TECHNOLOGIES ===== -->
+    <section id="technologies" class="dash-section dash-section-soft">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="eyebrow">Technology Explorer</p>
+          <h2>Modern Web Technologies</h2>
+          <p>See what it takes to build a complete web platform. Pick a technology to learn about it.</p>
+        </div>
+
+        <div class="filter-options tech-buttons" role="group" aria-label="Choose a technology">
+          <button type="button" class="filter-btn" data-tech="nextjs" aria-pressed="true">Next.js</button>
+          <button type="button" class="filter-btn" data-tech="vue" aria-pressed="false">Vue.js</button>
+          <button type="button" class="filter-btn" data-tech="angular" aria-pressed="false">Angular</button>
+          <button type="button" class="filter-btn" data-tech="backend" aria-pressed="false">Backend</button>
+        </div>
+
+        <!-- JavaScript fills this panel -->
+        <article class="tech-panel" id="tech-panel" aria-live="polite"></article>
+
+      </div>
+    </section>
+
+    </div>
+
+  </main>
+
+  <!-- ===== TASK DETAILS POPUP (filled by JavaScript) ===== -->
+  <dialog class="challenge-dialog" id="task-dialog" aria-labelledby="task-dialog-title">
+
+    <div class="dialog-header">
+      <div>
+        <p class="dialog-meta" id="task-dialog-meta">Task</p>
+        <h2 id="task-dialog-title">Task details</h2>
+      </div>
+      <button type="button" class="dialog-close" id="task-dialog-close" aria-label="Close task details">&times;</button>
+    </div>
+
+    <div class="dialog-body" id="task-dialog-body"></div>
+
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" id="task-dialog-close-bottom">Close</button>
+    </div>
+
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/techbridge-logo.png" alt="TechBridge home">
+        </a>
+        <p>Bridging Learning to Real-World Experience</p>
+        <p class="footer-small">TechBridge by Baselink Services Limited</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="tasks.html">Roadmap</a></li>
+          <li><a href="challenges.html">Challenges</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="index.html#community">Community</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-connect">
+        <h3>Connect</h3>
+        <ul>
+          <li>
+            <a href="mailto:techbridgebaslink@gmail.com">techbridgebaslink@gmail.com</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/techbridge-services/"
+               target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/p/Baselink-Services-100066771475783/"
+               target="_blank" rel="noopener noreferrer">Facebook</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 TechBridge by Baselink Services Limited. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/dashboard.js?v=4"></script>
+</body>
+</html>
