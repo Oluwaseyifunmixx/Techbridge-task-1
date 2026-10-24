@@ -20,7 +20,7 @@ const webTasks = [
     description: "Create the first version of the TechBridge website using HTML and CSS.",
     details: "Build a responsive homepage that introduces TechBridge, its programs and the 30-day internship.",
     skills: ["HTML5", "CSS3", "Responsive design"],
-    status: "completed"
+    status: "in-progress"
   },
   {
     number: 2,
@@ -30,7 +30,7 @@ const webTasks = [
     description: "Create a Programs experience presenting TechBridge's available learning programs.",
     details: "Design a page that explains the Data Analytics and Web Development programs and compares them side by side.",
     skills: ["Semantic HTML", "CSS Grid", "Layout"],
-    status: "completed"
+    status: "not-started"
   },
   {
     number: 3,
@@ -40,7 +40,7 @@ const webTasks = [
     description: "Create an interface that presents the TechBridge internship tasks and helps users understand the internship journey.",
     details: "Present the internship tasks in a clear, easy-to-scan layout that shows the 30-day journey.",
     skills: ["HTML5", "CSS3", "Information design"],
-    status: "completed"
+    status: "not-started"
   },
   {
     number: 4,
@@ -50,7 +50,7 @@ const webTasks = [
     description: "Use JavaScript to allow visitors to switch between the Data Analytics and Web Development internship tracks.",
     details: "Store the tasks as JavaScript data and render them on the page, switching tracks without a refresh.",
     skills: ["JavaScript", "DOM manipulation", "Event listeners"],
-    status: "in-progress"
+    status: "not-started"
   },
   {
     number: 5,
@@ -103,7 +103,7 @@ const dataTasks = [
     description: "Clean a messy dataset using Google Sheets or Excel. Identify and fix duplicate rows, blank cells, inconsistent formatting, and incorrect data types.",
     details: "Take a messy spreadsheet and turn it into a clean, reliable dataset ready for analysis.",
     skills: ["Google Sheets", "Excel", "Data cleaning"],
-    status: "completed"
+    status: "in-progress"
   },
   {
     number: 2,
@@ -113,7 +113,7 @@ const dataTasks = [
     description: "Use spreadsheet formulas and Pivot Tables to answer questions and extract useful insights from a dataset.",
     details: "Summarise a dataset with formulas and Pivot Tables to answer real questions about it.",
     skills: ["Formulas", "Pivot Tables", "Summarising data"],
-    status: "completed"
+    status: "not-started"
   },
   {
     number: 3,
@@ -123,7 +123,7 @@ const dataTasks = [
     description: "Create charts and a simple dashboard that communicate useful insights from a dataset.",
     details: "Choose the right charts and arrange them in a simple dashboard that tells a clear story.",
     skills: ["Charts", "Dashboards", "Data storytelling"],
-    status: "in-progress"
+    status: "not-started"
   },
   {
     number: 4,
@@ -181,6 +181,13 @@ const tracks = {
   web: { name: "Web Development", tasks: webTasks },
   data: { name: "Data Analytics", tasks: dataTasks }
 };
+
+// Every new intern starts from these statuses
+[webTasks, dataTasks].forEach(function (list) {
+  list.forEach(function (task) {
+    task.startStatus = task.status;
+  });
+});
 
 const statusLabels = {
   "completed": "Completed",
@@ -562,6 +569,18 @@ registerForm.addEventListener("submit", function (event) {
     return;
   }
   nameError.hidden = true;
+
+  // A new registration starts fresh: clear any earlier progress
+  Object.keys(tracks).forEach(function (key) {
+    tracks[key].tasks.forEach(function (task) {
+      task.status = task.startStatus;
+    });
+    try {
+      localStorage.removeItem(STORAGE_KEY + "-" + key);
+    } catch (error) {
+      // Nothing to clear
+    }
+  });
 
   const profile = {
     name: name,
