@@ -1,0 +1,13 @@
+{
+  "name": "techbridge-website",
+  "version": "1.0.0",
+  "description": "TechBridge website and Task Management API",
+  "private": true,
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "mongodb": "^6.21.0"
+  }
+}

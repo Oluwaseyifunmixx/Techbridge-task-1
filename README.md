@@ -66,9 +66,18 @@ Task changes (status updates and added tasks) are saved to `backend/data/progres
 
 The dashboard also works when the website is opened with VS Code Live Server, as long as the backend is running on port 3000.
 
-### Live site note
+### Deploy it online (Vercel + MongoDB Atlas)
 
-GitHub Pages only hosts static files, so the Node.js backend does not run there. On the live site the dashboard correctly shows "Unable to load tasks" and "Backend Status: Offline". To make it work online, deploy the `backend` folder to a Node host and put its address in `js/config.js`.
+Vercel runs the API as short-lived functions that do not keep files or memory between requests, so online the tasks are stored in a MongoDB database instead of a file. Locally nothing changes: with no database address set, the API keeps using `backend/data/progress.json`.
+
+1. **Database:** create a free cluster on MongoDB Atlas, add a database user, allow network access from anywhere (`0.0.0.0/0`), and copy the connection string.
+2. **Vercel:** import this GitHub repository as a new project. Leave the build settings empty (framework preset: Other).
+3. **Environment variable:** add `MONGODB_URI` with the connection string from step 1, then deploy.
+4. Open the Vercel address plus `/dashboard.html`. The first request fills the database with the starting tasks.
+
+The website and the API share one Vercel address, so nothing else needs configuring. To use the API from the GitHub Pages site as well, put the Vercel address in `js/config.js`.
+
+Never commit the connection string. It belongs only in Vercel's environment variables.
 
 ## Project structure
 
@@ -81,10 +90,16 @@ GitHub Pages only hosts static files, so the Node.js backend does not run there.
     ├── style.css
     ├── script.js          (Roadmap page)
     ├── challenges.js      (Challenge Hub page)
+    ├── api/index.js           (Vercel entry point)
+    ├── vercel.json
+    ├── package.json           (used by Vercel)
     ├── backend/
-    │   ├── server.js          (Express API)
+    │   ├── app.js             (API routes)
+    │   ├── server.js          (local server)
+    │   ├── fileStore.js       (saves tasks to a file)
+    │   ├── mongoStore.js      (saves tasks in MongoDB)
     │   ├── package.json
-    │   └── data/tasks.json    (task data)
+    │   └── data/tasks.json    (starting task data)
     ├── css/
     │   └── dashboard.css  (Dashboard page)
     ├── js/
